@@ -36,6 +36,7 @@ function Sidebar({ status }) {
   const history = useHistory();
 
   const handleItemClick = ({ target: { innerText } }) => {
+    console.log("hanlde");
     return history.push({ pathname: "/", search: `?=${innerText}` });
   };
 
