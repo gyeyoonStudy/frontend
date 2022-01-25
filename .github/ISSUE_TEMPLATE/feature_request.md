@@ -1,10 +1,18 @@
 ---
-name: BASIC_ISSUE_TEMPLATE
-about: 기본 이슈 템플릿
+name: Feature request
+about: Suggest an idea for this project
 title: ''
 labels: ''
 assignees: ''
 
+---
+
+---
+name: BASIC_ISSUE_TEMPLATE
+about: 기본 이슈 템플릿
+title: ""
+labels: ""
+assignees: ""
 ---
 
 ## 제목 양식
