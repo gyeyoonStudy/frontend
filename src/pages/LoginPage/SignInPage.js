@@ -1,13 +1,12 @@
-﻿import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../styles/theme";
-import media from "../../styles/media";
-import { BlackButton, WhiteButton } from "../../components/Button/Button";
+﻿import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Header from "../../components/Layout/Header/Header";
+
+import styled from "styled-components";
+import theme from "../../styles/theme";
+
+import { BlackButton, WhiteButton } from "../../components/Button/Button";
 import Footer from "../../components/Layout/Footer/Footer";
-import { Input, LabelInput } from "../../components/Input/Input";
-import { useState } from "react";
+import { LabelInput } from "../../components/Input/Input";
 
 function SignInPage() {
   const [inputs, setInputs] = useState({});
@@ -16,19 +15,16 @@ function SignInPage() {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    console.log(`Email : ${inputs.Email}, Password ${inputs.Password}`);
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     history.push("/home");
-    alert(inputs);
   };
   const onClickSignup = (event) => {
     event.preventDefault();
     history.push("/login/signup");
-    alert(inputs);
   };
 
   return (
@@ -118,12 +114,6 @@ const InputWrapper = styled.div`
   justify-content: left;
   flex-direction: column;
   padding-bottom: 10%;
-`;
-
-const InputLabel = styled.p`
-  float: left;
-  font-size: 0.7rem;
-  padding-bottom: 5%;
 `;
 
 const ButtonContainer = styled.div`
