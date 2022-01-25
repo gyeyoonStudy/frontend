@@ -1,9 +1,11 @@
 ﻿import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+
 import logo from "../../../assets/logo_small.png";
 import menu from "../../../assets/ic_menu.png";
+
 import Sidebar from "../Sidebar/Sidebar";
-import { useHistory } from "react-router-dom";
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -37,9 +39,6 @@ function Header() {
   const history = useHistory();
   const [isSidebar, setSidebar] = useState(false);
 
-  // useEffect(() => {
-  //   setSidebar(false);
-  // }, isSidebar);
   const onClickMenu = () => {
     setSidebar((current) => !current);
   };

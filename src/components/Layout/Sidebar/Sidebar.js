@@ -1,7 +1,7 @@
 ﻿import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../../../styles/theme";
-import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const StyledBar = styled.div`
@@ -34,11 +34,6 @@ const StyledBody = styled.div`
 
 function Sidebar({ status }) {
   const history = useHistory();
-
-  const handleItemClick = ({ target: { innerText } }) => {
-    console.log("hanlde");
-    return history.push({ pathname: "/", search: `?=${innerText}` });
-  };
 
   return (
     <div>

@@ -1,11 +1,10 @@
-﻿import React from "react";
+﻿import React,{ useState }  from "react";
+
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import PropTypes from "prop-types";
-import { useState } from "react";
-import Modal from "../Modal/Modal";
-import { BlackButton } from "../Button/Button";
-import ReactDOM from "react-dom";
+
+
 
 const StyledContainer = styled.div`
   position: relative;

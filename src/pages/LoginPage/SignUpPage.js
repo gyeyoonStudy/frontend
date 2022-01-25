@@ -1,17 +1,13 @@
 ﻿import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../styles/theme";
-import media from "../../styles/media";
-import {
-  BlackButton,
-  WhiteButton,
-  WideButton,
-} from "../../components/Button/Button";
-import { useHistory } from "react-router-dom";
-import Header from "../../components/Layout/Header/Header";
-import Footer from "../../components/Layout/Footer/Footer";
-import { Input, LabelInput } from "../../components/Input/Input";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+
+import styled from "styled-components";
+import theme from "../../styles/theme";
+
+import { WideButton } from "../../components/Button/Button";
+import { LabelInput } from "../../components/Input/Input";
+
 import waveImage from "../../assets/wave_background.png";
 
 function SignUpPage() {
@@ -21,14 +17,12 @@ function SignUpPage() {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    console.log(`Email : ${inputs.Email}, Password ${inputs.Password}`);
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     history.push("/home");
-    //alert(inputs);
   };
 
   return (
@@ -49,7 +43,7 @@ function SignUpPage() {
               <LabelInput
                 type={"text"}
                 name={"Email"}
-                alue={inputs.Password || ""}
+                value={inputs.Password || ""}
                 onChange={handleChange}
               />
             </InputWrapper>
@@ -89,7 +83,6 @@ const Body = styled.div`
   width: 100%;
   height: 80vh;
   align-items: center;
-
   font-family: "Noto Sans KR", sans-serif;
 `;
 const Container = styled.div`
