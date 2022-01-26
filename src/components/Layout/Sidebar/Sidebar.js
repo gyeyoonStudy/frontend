@@ -58,6 +58,7 @@ const MenuItem = styled.li`
 
 function Sidebar({ setSidebarOpen, width }) {
   const [xPosition, setX] = useState(width);
+  const history = useHistory();
 
   const toggleMenu = () => {
     if (xPosition === width) {
@@ -82,7 +83,13 @@ function Sidebar({ setSidebarOpen, width }) {
           <Boated />
           <ul>
             <MenuItem>내 정보 수정</MenuItem>
-            <MenuItem>내 프로젝트</MenuItem>
+            <MenuItem
+              onClick={() => {
+                history.push("/home");
+              }}
+            >
+              내 프로젝트
+            </MenuItem>
             <MenuItem>초대확인</MenuItem>
             <MenuItem>로그아웃</MenuItem>
           </ul>
