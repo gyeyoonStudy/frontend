@@ -1,7 +1,7 @@
 ﻿import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-
 import styled from "styled-components";
+
 import theme from "../../styles/theme";
 
 import { BlackButton, WhiteButton } from "../../components/Button/Button";

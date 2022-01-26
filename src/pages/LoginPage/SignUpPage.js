@@ -1,8 +1,8 @@
 ﻿import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-
 import styled from "styled-components";
+
 import theme from "../../styles/theme";
 
 import { WideButton } from "../../components/Button/Button";
