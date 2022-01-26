@@ -5,7 +5,6 @@ function AppLayout() {
   return (
     <div className="AppLayout">
       <Header />
-      <div id="portal"></div>
     </div>
   );
 }
