@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 import theme from "../../styles/theme";
 
-import { BlackButton, WhiteButton } from "../../components/Button/Button";
+import { BlackButton, WhiteButton } from "../../components/Button";
 import Footer from "../../components/Layout/Footer/Footer";
-import { LabelInput } from "../../components/Input/Input";
+import { LabelInput } from "../../components/Input";
 
 function SignInPage() {
   const [inputs, setInputs] = useState({});

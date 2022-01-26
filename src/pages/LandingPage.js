@@ -2,7 +2,7 @@
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../styles/theme";
-import { BlackButton, WhiteButton } from "../components/Button/Button";
+import { BlackButton, WhiteButton } from "../components/Button";
 import BackgroundImage from "../../src/assets/background.png";
 
 const Body = styled.div`
