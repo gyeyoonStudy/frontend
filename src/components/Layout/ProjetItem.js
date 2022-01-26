@@ -1,11 +1,50 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
+
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import PropTypes from "prop-types";
-import { useState } from "react";
-import Modal from "../Modal/Modal";
-import { BlackButton } from "../Button/Button";
-import ReactDOM from "react-dom";
+
+function ProjectBar({ process, color }) {
+  return <StyledBar color={color} process={process}></StyledBar>;
+}
+
+function ProjetItem({
+  process,
+  color,
+  onClick,
+  projectName,
+  projectTask,
+  Dday,
+}) {
+  return (
+    <StyledContainer onClick={onClick}>
+      <StyledBody>
+        <ProjectBar process={process} color={color} />
+        <StyledWrapper>
+          <TextContainer>
+            <StyledName>{projectName}</StyledName>
+            <StyledName>{projectTask}</StyledName>
+          </TextContainer>
+          <DayContainer>
+            <StyledName>마감기한</StyledName>
+            <StyledDay>{Dday}</StyledDay>
+          </DayContainer>
+        </StyledWrapper>
+      </StyledBody>
+    </StyledContainer>
+  );
+}
+
+ProjetItem.propTypes = {
+  process: PropTypes.string,
+  color: PropTypes.string,
+  onClick: PropTypes.func,
+  projectName: PropTypes.string,
+  projectTask: PropTypes.string,
+  Dday: PropTypes.string,
+};
+
+export default ProjetItem;
 
 const StyledContainer = styled.div`
   position: relative;
@@ -70,45 +109,3 @@ const StyledBar = styled.div`
   border-radius: 3px;
   align-content: center;
 `;
-
-function ProjectBar({ process, color }) {
-  return <StyledBar color={color} process={process}></StyledBar>;
-}
-
-function ProjetItem({
-  process,
-  color,
-  onClick,
-  projectName,
-  projectTask,
-  Dday,
-}) {
-  return (
-    <StyledContainer onClick={onClick}>
-      <StyledBody>
-        <ProjectBar process={process} color={color} />
-        <StyledWrapper>
-          <TextContainer>
-            <StyledName>{projectName}</StyledName>
-            <StyledName>{projectTask}</StyledName>
-          </TextContainer>
-          <DayContainer>
-            <StyledName>마감기한</StyledName>
-            <StyledDay>{Dday}</StyledDay>
-          </DayContainer>
-        </StyledWrapper>
-      </StyledBody>
-    </StyledContainer>
-  );
-}
-
-ProjetItem.propTypes = {
-  process: PropTypes.string,
-  color: PropTypes.string,
-  onClick: PropTypes.func,
-  projectName: PropTypes.string,
-  projectTask: PropTypes.string,
-  Dday: PropTypes.string,
-};
-
-export default ProjetItem;
