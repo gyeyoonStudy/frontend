@@ -1,9 +1,8 @@
-﻿import React,{ useState }  from "react";
+﻿import React, { useState } from "react";
 
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import PropTypes from "prop-types";
-
 
 function ProjectBar({ process, color }) {
   return <StyledBar color={color} process={process}></StyledBar>;
@@ -46,7 +45,6 @@ ProjetItem.propTypes = {
 };
 
 export default ProjetItem;
-
 
 const StyledContainer = styled.div`
   position: relative;
