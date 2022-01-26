@@ -1,17 +1,17 @@
 ﻿import React, { useEffect } from "react";
 import styled from "styled-components";
-import Header from "../components/Layout/Header/Header";
-import Profile from "../assets/profile.png";
-import { Input } from "../components/Input/Input";
-import TextBox from "../components/Layout/TextBox";
-import { WideButton } from "../components/Button/Button";
-import waveImage from "../assets/wave_background.png";
-import floating from "../assets/floating.png";
-import ProjetItem from "../components/Layout/ProjetItem";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import Sidebar from "../components/Layout/Sidebar/Sidebar";
+
+import { Input } from "../components/Input";
+import TextBox from "../components/Layout/TextBox";
+import { WideButton } from "../components/Button";
+import ProjetItem from "../components/Layout/ProjetItem";
 import Modal from "../components/Modal/Modal";
+
+import Profile from "../assets/profile.png";
+import waveImage from "../assets/wave_background.png";
+import floating from "../assets/floating.png";
 
 function HomePage() {
   const history = useHistory();

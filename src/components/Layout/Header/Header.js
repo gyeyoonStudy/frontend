@@ -1,9 +1,11 @@
 ﻿import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+
 import logo from "../../../assets/logo_small.png";
 import menu from "../../../assets/ic_menu.png";
+
 import Sidebar from "../Sidebar/Sidebar";
-import { useHistory } from "react-router-dom";
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -35,13 +37,10 @@ const Menu = styled.img.attrs({
 
 function Header() {
   const history = useHistory();
-  const [isSidebar, setSidebar] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-  // useEffect(() => {
-  //   setSidebar(false);
-  // }, isSidebar);
   const onClickMenu = () => {
-    setSidebar((current) => !current);
+    setSidebarOpen((prev) => !prev);
   };
 
   const backHome = () => {
@@ -54,7 +53,7 @@ function Header() {
         <Logo onClick={backHome} />
         <Menu onClick={onClickMenu} />
       </StyledHeader>
-      {isSidebar ? <Sidebar status={isSidebar} /> : null}
+      {isSidebarOpen ? <Sidebar status={isSidebarOpen} /> : null}
     </div>
   );
 }
