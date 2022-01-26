@@ -1,12 +1,12 @@
 ﻿import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-
 import styled from "styled-components";
+
 import theme from "../../styles/theme";
 
-import { WideButton } from "../../components/Button/Button";
-import { LabelInput } from "../../components/Input/Input";
+import { WideButton } from "../../components/Button";
+import { LabelInput } from "../../components/Input";
 
 import waveImage from "../../assets/wave_background.png";
 

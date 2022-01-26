@@ -1,8 +1,9 @@
 ﻿import React from "react";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
-import theme from "../../../styles/theme";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+import theme from "../../../styles/theme";
 
 const StyledBar = styled.div`
   position: fixed;

@@ -3,8 +3,8 @@
 import ProjetItem from "../../components/Layout/ProjetItem";
 import Modal from "../../components/Modal/Modal";
 import SignUpBox from "../../components/Layout/SignUpBox";
-import { BlackButton } from "../../components/Button/Button";
-import { Input } from "../../components/Input/Input";
+import { BlackButton } from "../../components/Button";
+import { Input } from "../../components/Input";
 
 function DetailPage() {
   const [modalVisible, setModalVisible] = useState(false);
