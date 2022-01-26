@@ -7,61 +7,7 @@ import theme from "../../styles/theme";
 import { BlackButton, WhiteButton } from "../../components/Button";
 import Footer from "../../components/Layout/Footer/Footer";
 import { LabelInput } from "../../components/Input";
-
-function SignInPage() {
-  const [inputs, setInputs] = useState({});
-  const history = useHistory();
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    history.push("/home");
-  };
-  const onClickSignup = (event) => {
-    event.preventDefault();
-    history.push("/login/signup");
-  };
-
-  return (
-    <Container>
-      <Body>
-        <StyledContainer>
-          <StyledBlock />
-          <FormContainer onSubmit={handleSubmit}>
-            <InputWrapper className="input-wrapper">
-              <LabelInput
-                type={"text"}
-                name={"Email"}
-                value={inputs.Email || ""}
-                onChange={handleChange}
-              />
-            </InputWrapper>
-            <InputWrapper className="input-wrapper">
-              <LabelInput
-                type={"password"}
-                name={"Password"}
-                alue={inputs.Password || ""}
-                onChange={handleChange}
-              />
-            </InputWrapper>
-            <ButtonContainer>
-              <WhiteButton text={"로그인"} />
-              <BlackButton text={"회원가입"} onClick={onClickSignup} />
-            </ButtonContainer>
-          </FormContainer>
-        </StyledContainer>
-      </Body>
-      <Footer />
-    </Container>
-  );
-}
-
-export default SignInPage;
+import AppLayout from "../../components/AppLayout";
 
 const Body = styled.div`
   position: absolute;
@@ -75,7 +21,7 @@ const Body = styled.div`
 `;
 const Container = styled.div`
   position: relative;
-  height: calc(100vh - 60px) !important;
+  height: calc(100vh) !important;
 `;
 
 const StyledContainer = styled.div`
@@ -122,3 +68,59 @@ const ButtonContainer = styled.div`
   flex-direction: row;
   column-gap: 20px;
 `;
+
+function SignInPage() {
+  const [inputs, setInputs] = useState({});
+  const history = useHistory();
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    history.push("/home");
+  };
+  const onClickSignup = (event) => {
+    event.preventDefault();
+    history.push("/login/signup");
+  };
+
+  return (
+    <Container>
+      <AppLayout />
+      <Body>
+        <StyledContainer>
+          <StyledBlock />
+          <FormContainer onSubmit={handleSubmit}>
+            <InputWrapper className="input-wrapper">
+              <LabelInput
+                type={"text"}
+                name={"Email"}
+                value={inputs.Email || ""}
+                onChange={handleChange}
+              />
+            </InputWrapper>
+            <InputWrapper className="input-wrapper">
+              <LabelInput
+                type={"password"}
+                name={"Password"}
+                alue={inputs.Password || ""}
+                onChange={handleChange}
+              />
+            </InputWrapper>
+            <ButtonContainer>
+              <WhiteButton text={"로그인"} />
+              <BlackButton text={"회원가입"} onClick={onClickSignup} />
+            </ButtonContainer>
+          </FormContainer>
+        </StyledContainer>
+      </Body>
+      <Footer />
+    </Container>
+  );
+}
+
+export default SignInPage;

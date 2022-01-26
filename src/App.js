@@ -4,7 +4,6 @@ import Router from "./router/index";
 function App() {
   return (
     <div className="App">
-      <AppLayout />
       <Router />
     </div>
   );

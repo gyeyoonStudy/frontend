@@ -8,90 +8,11 @@ import TextBox from "../components/Layout/TextBox";
 import { WideButton } from "../components/Button";
 import ProjetItem from "../components/Layout/ProjetItem";
 import Modal from "../components/Modal/Modal";
+import AppLayout from "../components/AppLayout";
 
 import Profile from "../assets/profile.png";
 import waveImage from "../assets/wave_background.png";
 import floating from "../assets/floating.png";
-
-function HomePage() {
-  const history = useHistory();
-
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const openModal = () => {
-    setModalVisible(true);
-  };
-  const closeModal = () => {
-    setModalVisible(false);
-  };
-  const onClickItem = () => {
-    history.push("/project/detail");
-  };
-
-  return (
-    <Container>
-      <Body>
-        <ProjectContainer>
-          <ProfileContainer>
-            <ProfileImg />
-            <div style={{ width: "35%" }}>
-              <ProfileWrapper>
-                <p style={{ fontSize: "0.9rem", marginRight: "20%" }}>
-                  {"닉네임"}
-                </p>
-                <TextBox text={"Boated"} />
-              </ProfileWrapper>
-              <ProfileWrapper>
-                <p style={{ fontSize: "0.9rem", marginRight: "20%" }}>
-                  {"이메일"}
-                </p>
-                <TextBox text={"Boated@gmail.com"} />
-              </ProfileWrapper>
-            </div>
-          </ProfileContainer>
-          <WideButton text={"프로젝트"} width="100%" fontSize="0.8rem" />
-          <ProjetItem
-            process={"50%"}
-            color={"tomato"}
-            projectName={"Project Boated1"}
-            projectTask={"Task"}
-            Dday={"2022-01-01 11:11"}
-          ></ProjetItem>
-          <ProjetItem
-            process={"100%"}
-            color={"green"}
-            projectName={"Project Boated2"}
-            projectTask={"Task"}
-            Dday={"2022-01-01 11:11"}
-            onClick={onClickItem}
-          ></ProjetItem>
-          <>
-            <ProjetItem
-              process={"70%"}
-              color={"black"}
-              projectName={"Project Boated2"}
-              projectTask={"Task"}
-              Dday={"2022-01-01 11:11"}
-              onClick={openModal}
-            ></ProjetItem>
-            {modalVisible && (
-              <Modal
-                visible={modalVisible}
-                closable={true}
-                maskClosable={true}
-                onClose={closeModal}
-              >
-                <Input />
-              </Modal>
-            )}
-          </>
-        </ProjectContainer>
-      </Body>
-      <FloatingIcon />
-      <BackgroundImg />
-    </Container>
-  );
-}
 
 const Body = styled.div`
   position: absolute;
@@ -168,5 +89,86 @@ const BackgroundImg = styled.div`
   background-repeat: no-repeat;
   background-image: url(${waveImage});
 `;
+
+function HomePage() {
+  const history = useHistory();
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+  const onClickItem = () => {
+    history.push("/project/detail");
+  };
+
+  return (
+    <Container>
+      <AppLayout />
+      <Body>
+        <ProjectContainer>
+          <ProfileContainer>
+            <ProfileImg />
+            <div style={{ width: "35%" }}>
+              <ProfileWrapper>
+                <p style={{ fontSize: "0.9rem", marginRight: "20%" }}>
+                  {"닉네임"}
+                </p>
+                <TextBox text={"Boated"} />
+              </ProfileWrapper>
+              <ProfileWrapper>
+                <p style={{ fontSize: "0.9rem", marginRight: "20%" }}>
+                  {"이메일"}
+                </p>
+                <TextBox text={"Boated@gmail.com"} />
+              </ProfileWrapper>
+            </div>
+          </ProfileContainer>
+          <WideButton text={"프로젝트"} width="100%" fontSize="0.8rem" />
+          <ProjetItem
+            process={"50%"}
+            color={"tomato"}
+            projectName={"Project Boated1"}
+            projectTask={"Task"}
+            Dday={"2022-01-01 11:11"}
+          ></ProjetItem>
+          <ProjetItem
+            process={"100%"}
+            color={"green"}
+            projectName={"Project Boated2"}
+            projectTask={"Task"}
+            Dday={"2022-01-01 11:11"}
+            onClick={onClickItem}
+          ></ProjetItem>
+          <>
+            <ProjetItem
+              process={"70%"}
+              color={"black"}
+              projectName={"Project Boated2"}
+              projectTask={"Task"}
+              Dday={"2022-01-01 11:11"}
+              onClick={openModal}
+            ></ProjetItem>
+            {modalVisible && (
+              <Modal
+                visible={modalVisible}
+                closable={true}
+                maskClosable={true}
+                onClose={closeModal}
+              >
+                <Input />
+              </Modal>
+            )}
+          </>
+        </ProjectContainer>
+      </Body>
+      <FloatingIcon />
+      <BackgroundImg />
+    </Container>
+  );
+}
 
 export default HomePage;

@@ -1,16 +1,21 @@
 ﻿import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+
 import theme from "../styles/theme";
+
 import { BlackButton, WhiteButton } from "../components/Button";
+import AppLayout from "../components/AppLayout";
+
 import BackgroundImage from "../../src/assets/background.png";
 
 const Body = styled.div`
   padding: 0;
   margin: 0;
+  bottom: 0;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 60px) !important;
+  height: calc(100vh) !important;
   background-image: url(${BackgroundImage});
   font-family: "Noto Sans KR", sans-serif;
 `;
@@ -43,6 +48,7 @@ function LandingPage() {
 
   return (
     <Container className="container">
+      <AppLayout />
       <Body>
         <BtnWrapper>
           <BlackButton text={"로그인"} onClick={handleLogin} />

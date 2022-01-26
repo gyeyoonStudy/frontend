@@ -8,12 +8,15 @@ import menu from "../../../assets/ic_menu.png";
 import Sidebar from "../Sidebar/Sidebar";
 
 const StyledHeader = styled.div`
+  position: fixed;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
   height: 60px;
+  z-index: 990;
 `;
 
 const Logo = styled.img.attrs({
@@ -22,6 +25,7 @@ const Logo = styled.img.attrs({
   height: 50%;
   float: left;
   margin-left: 10px;
+  z-index: 990;
 `;
 
 const Menu = styled.img.attrs({
@@ -30,9 +34,9 @@ const Menu = styled.img.attrs({
   position: fixed;
   top: 20px;
   right: 0;
-  margin-right: 3%;
+  margin-right: 30px;
   float: right;
-  z-index: 6;
+  z-index: 990;
 `;
 
 function Header() {
@@ -44,16 +48,23 @@ function Header() {
   };
 
   const backHome = () => {
+    console.log("back");
     history.push("/");
   };
+
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, []);
 
   return (
     <div>
       <StyledHeader>
         <Logo onClick={backHome} />
-        <Menu onClick={onClickMenu} />
       </StyledHeader>
-      {isSidebarOpen ? <Sidebar status={isSidebarOpen} /> : null}
+      <Menu onClick={onClickMenu} />
+      {isSidebarOpen ? (
+        <Sidebar setSidebarOpen={setSidebarOpen} width={300} />
+      ) : null}
     </div>
   );
 }

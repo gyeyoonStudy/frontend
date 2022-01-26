@@ -7,8 +7,69 @@ import theme from "../../styles/theme";
 
 import { WideButton } from "../../components/Button";
 import { LabelInput } from "../../components/Input";
+import AppLayout from "../../components/AppLayout";
 
 import waveImage from "../../assets/wave_background.png";
+
+const Body = styled.div`
+  position: relative;
+  display: flex;
+  padding: 0;
+  width: 100%;
+  height: 80vh;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+`;
+const Container = styled.div`
+  height: calc(100vh) !important;
+`;
+
+const BackgroundImg = styled.div`
+  position: fixed;
+  height: 40%;
+  width: 100%;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-image: url(${waveImage});
+`;
+
+const BoxContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  height: 90%;
+  margin: 0 auto;
+  margin-top: 10%;
+  background-color: ${theme.colors.light_gray};
+  border-radius: 1rem;
+  z-index: 3;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  padding-bottom: 10%;
+`;
+
+const FormContainer = styled.form`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+  top: 50%;
+  transform: translateY(-50%);
+  float: right;
+  align-items: center;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  column-gap: 20px;
+`;
 
 function SignUpPage() {
   const [inputs, setInputs] = useState({});
@@ -27,6 +88,7 @@ function SignUpPage() {
 
   return (
     <Container>
+      <AppLayout />
       <Body>
         <BackgroundImg />
         <BoxContainer>
@@ -74,64 +136,3 @@ function SignUpPage() {
 }
 
 export default SignUpPage;
-
-const Body = styled.div`
-  position: absolute;
-  display: flex;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 80vh;
-  align-items: center;
-  font-family: "Noto Sans KR", sans-serif;
-`;
-const Container = styled.div`
-  position: relative;
-  height: calc(100vh - 60px) !important;
-`;
-
-const BackgroundImg = styled.div`
-  position: fixed;
-  height: 40%;
-  width: 100%;
-  bottom: 0;
-  background-repeat: no-repeat;
-  background-image: url(${waveImage});
-`;
-
-const BoxContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 30%;
-  height: 90%;
-  margin: 0 auto;
-  background-color: ${theme.colors.light_gray};
-  border-radius: 1rem;
-  z-index: 3;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  justify-content: left;
-  flex-direction: column;
-  padding-bottom: 10%;
-`;
-
-const FormContainer = styled.form`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 60%;
-  top: 50%;
-  transform: translateY(-50%);
-  float: right;
-  align-items: center;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  column-gap: 20px;
-`;
