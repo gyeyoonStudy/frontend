@@ -63,7 +63,7 @@ function Header() {
       </StyledHeader>
       <Menu onClick={onClickMenu} />
       {isSidebarOpen ? (
-        <Sidebar setSidebarOpen={setisSidebarOpen} width={300} />
+        <Sidebar setisSidebarOpen={setisSidebarOpen} width={300} />
       ) : null}
     </div>
   );

@@ -97,7 +97,7 @@ function Sidebar({ setisSidebarOpen, width }) {
 }
 
 Sidebar.propTypes = {
-  setSidebarOpen: PropTypes.func.isRequired,
+  setisSidebarOpen: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
 };
 
