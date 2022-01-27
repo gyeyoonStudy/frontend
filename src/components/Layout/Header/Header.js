@@ -19,18 +19,18 @@ const StyledHeader = styled.div`
   z-index: 990;
 `;
 
-const Logo = styled.img.attrs({
-  src: `${logo}`,
-})`
+///// 출력 안됨
+const Logo = styled.img`
+  src: url(${(props) => props.img});
   height: 50%;
   float: left;
   margin-left: 10px;
   z-index: 990;
 `;
 
-const Menu = styled.img.attrs({
-  src: `${menu}`,
-})`
+///// 출력 안됨
+const Menu = styled.img`
+  src: ${menu};
   position: fixed;
   top: 20px;
   right: 0;
@@ -38,6 +38,8 @@ const Menu = styled.img.attrs({
   float: right;
   z-index: 990;
 `;
+
+const logoImagePath = "../../../assets/logo_small.png";
 
 function Header() {
   const history = useHistory();
@@ -59,7 +61,7 @@ function Header() {
   return (
     <div>
       <StyledHeader>
-        <Logo onClick={onClickBackHome} />
+        <Logo onClick={onClickBackHome} img={logoImagePath} />
       </StyledHeader>
       <Menu onClick={onClickMenu} />
       {isSidebarOpen ? (
