@@ -57,22 +57,19 @@ const MenuItem = styled.li`
 `;
 
 function Sidebar({ setSidebarOpen, width }) {
-  const [xPosition, setX] = useState(width);
+  const [xPosition, setX] = useState(width); //1.이미 + width를 해서 오른쪽에 넣어놓음(초기에)
   const history = useHistory();
 
   const toggleMenu = () => {
-    if (xPosition === width) {
-      setX(0);
-    } else {
-      setX(width);
-    }
+    //toggleMenu는 닫는 동작만 있어도 된다
+    setX(width); //3.안으로 들어가기
     setTimeout(() => {
-      setSidebarOpen((prev) => !prev);
+      setSidebarOpen((prev) => !prev); // 4.부모에게 상태 전달
     }, 1000);
   };
 
   useEffect(() => {
-    setX(0);
+    setX(0); //2. 상태 변경과 동시에 꺼내서 열기 (바로 동작 ) useEffect는 화면이 다 그려진 뒤 실행됨
   }, []);
 
   return (
@@ -100,8 +97,8 @@ function Sidebar({ setSidebarOpen, width }) {
 }
 
 Sidebar.propTypes = {
-  setSidebarOpen: PropTypes.func,
-  width: PropTypes.number,
+  setSidebarOpen: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired,
 };
 
 export default Sidebar;
