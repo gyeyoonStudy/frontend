@@ -56,7 +56,7 @@ const MenuItem = styled.li`
   font-size: 0.7rem;
 `;
 
-function Sidebar({ setSidebarOpen, width }) {
+function Sidebar({ setisSidebarOpen, width }) {
   const [xPosition, setX] = useState(width); //1.이미 + width를 해서 오른쪽에 넣어놓음(초기에)
   const history = useHistory();
 
@@ -64,7 +64,7 @@ function Sidebar({ setSidebarOpen, width }) {
     //toggleMenu는 닫는 동작만 있어도 된다
     setX(width); //3.안으로 들어가기
     setTimeout(() => {
-      setSidebarOpen((prev) => !prev); // 4.부모에게 상태 전달
+      setisSidebarOpen((prev) => !prev); // 4.부모에게 상태 전달
     }, 1000);
   };
 

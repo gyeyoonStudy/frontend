@@ -41,29 +41,29 @@ const Menu = styled.img.attrs({
 
 function Header() {
   const history = useHistory();
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setisSidebarOpen] = useState(false);
 
   const onClickMenu = () => {
-    setSidebarOpen((prev) => !prev);
+    setisSidebarOpen((prev) => !prev);
   };
 
-  const backHome = () => {
+  const onClickBackHome = () => {
     console.log("back");
     history.push("/");
   };
 
   useEffect(() => {
-    setSidebarOpen(false);
+    setisSidebarOpen(false);
   }, []);
 
   return (
     <div>
       <StyledHeader>
-        <Logo onClick={backHome} />
+        <Logo onClick={onClickBackHome} />
       </StyledHeader>
       <Menu onClick={onClickMenu} />
       {isSidebarOpen ? (
-        <Sidebar setSidebarOpen={setSidebarOpen} width={300} />
+        <Sidebar setSidebarOpen={setisSidebarOpen} width={300} />
       ) : null}
     </div>
   );
