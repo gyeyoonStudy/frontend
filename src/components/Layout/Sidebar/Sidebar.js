@@ -30,9 +30,7 @@ const StyledBody = styled.div`
   padding-top: 50%;
 `;
 
-const Menu = styled.img.attrs({
-  src: `${menu}`,
-})`
+const Menu = styled.img`
   position: fixed;
   top: 20px;
   right: 0;
@@ -41,9 +39,7 @@ const Menu = styled.img.attrs({
   z-index: 1000;
 `;
 
-const Boated = styled.img.attrs({
-  src: `${boated}`,
-})`
+const Boated = styled.img`
   width: 20%;
   position: fixed;
   top: 100px;
@@ -56,28 +52,27 @@ const MenuItem = styled.li`
   font-size: 0.7rem;
 `;
 
-function Sidebar({ setisSidebarOpen, width }) {
-  const [xPosition, setX] = useState(width); //1.이미 + width를 해서 오른쪽에 넣어놓음(초기에)
+function Sidebar({ setIsSidebarOpen, width }) {
+  const [xPosition, setX] = useState(width);
   const history = useHistory();
 
   const toggleMenu = () => {
-    //toggleMenu는 닫는 동작만 있어도 된다
-    setX(width); //3.안으로 들어가기
+    setX(width);
     setTimeout(() => {
-      setisSidebarOpen((prev) => !prev); // 4.부모에게 상태 전달
+      setIsSidebarOpen((prev) => !prev);
     }, 1000);
   };
 
   useEffect(() => {
-    setX(0); //2. 상태 변경과 동시에 꺼내서 열기 (바로 동작 ) useEffect는 화면이 다 그려진 뒤 실행됨
+    setX(0);
   }, []);
 
   return (
     <div>
       <StyledBar xPosition={xPosition} width={width} className="open">
-        <Menu onClick={toggleMenu} />
+        <Menu onClick={toggleMenu} src={menu} />
         <StyledBody>
-          <Boated />
+          <Boated src={boated} />
           <ul>
             <MenuItem>내 정보 수정</MenuItem>
             <MenuItem
@@ -97,7 +92,7 @@ function Sidebar({ setisSidebarOpen, width }) {
 }
 
 Sidebar.propTypes = {
-  setisSidebarOpen: PropTypes.func.isRequired,
+  setIsSidebarOpen: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
 };
 

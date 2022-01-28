@@ -21,7 +21,6 @@ const StyledHeader = styled.div`
 
 ///// 출력 안됨
 const Logo = styled.img`
-  src: url(${(props) => props.img});
   height: 50%;
   float: left;
   margin-left: 10px;
@@ -30,7 +29,6 @@ const Logo = styled.img`
 
 ///// 출력 안됨
 const Menu = styled.img`
-  src: ${menu};
   position: fixed;
   top: 20px;
   right: 0;
@@ -39,14 +37,12 @@ const Menu = styled.img`
   z-index: 990;
 `;
 
-const logoImagePath = "../../../assets/logo_small.png";
-
 function Header() {
   const history = useHistory();
-  const [isSidebarOpen, setisSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const onClickMenu = () => {
-    setisSidebarOpen((prev) => !prev);
+    setIsSidebarOpen((prev) => !prev);
   };
 
   const onClickBackHome = () => {
@@ -55,17 +51,17 @@ function Header() {
   };
 
   useEffect(() => {
-    setisSidebarOpen(false);
+    setIsSidebarOpen(false);
   }, []);
 
   return (
     <div>
       <StyledHeader>
-        <Logo onClick={onClickBackHome} img={logoImagePath} />
+        <Logo onClick={onClickBackHome} src={logo} />
       </StyledHeader>
-      <Menu onClick={onClickMenu} />
+      <Menu onClick={onClickMenu} src={menu} />
       {isSidebarOpen ? (
-        <Sidebar setisSidebarOpen={setisSidebarOpen} width={300} />
+        <Sidebar setIsSidebarOpen={setIsSidebarOpen} width={300} />
       ) : null}
     </div>
   );

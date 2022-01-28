@@ -47,7 +47,7 @@ function LandingPage() {
   };
 
   return (
-    <Container className="container">
+    <Container>
       <AppLayout />
       <Body>
         <BtnWrapper>

@@ -32,18 +32,14 @@ const Container = styled.div`
   z-index: 1;
 `;
 
-const ProfileImg = styled.img.attrs({
-  src: `${Profile}`,
-})`
+const ProfileImg = styled.img`
   width: 15%;
   float: left;
   height: auto;
   margin-right: 5%;
 `;
 
-const FloatingIcon = styled.img.attrs({
-  src: `${floating}`,
-})`
+const FloatingIcon = styled.img`
   position: fixed;
   top: 80vh;
   width: 5%;
@@ -111,7 +107,7 @@ function HomePage() {
       <Body>
         <ProjectContainer>
           <ProfileContainer>
-            <ProfileImg />
+            <ProfileImg src={Profile} />
             <div style={{ width: "35%" }}>
               <ProfileWrapper>
                 <p style={{ fontSize: "0.9rem", marginRight: "20%" }}>
@@ -165,7 +161,7 @@ function HomePage() {
           </>
         </ProjectContainer>
       </Body>
-      <FloatingIcon />
+      <FloatingIcon src={floating} />
       <BackgroundImg />
     </Container>
   );
