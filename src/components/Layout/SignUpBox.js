@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { Input } from "../Input/Input";
+import { Input } from "../Input";
 
 const StyledContainer = styled.div`
   position: relative;

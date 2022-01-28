@@ -1,60 +1,68 @@
 ﻿import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+
 import logo from "../../../assets/logo_small.png";
 import menu from "../../../assets/ic_menu.png";
+
 import Sidebar from "../Sidebar/Sidebar";
-import { useHistory } from "react-router-dom";
 
 const StyledHeader = styled.div`
+  position: fixed;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
   height: 60px;
+  z-index: 990;
 `;
 
-const Logo = styled.img.attrs({
-  src: `${logo}`,
-})`
+///// 출력 안됨
+const Logo = styled.img`
   height: 50%;
   float: left;
   margin-left: 10px;
+  z-index: 990;
 `;
 
-const Menu = styled.img.attrs({
-  src: `${menu}`,
-})`
+///// 출력 안됨
+const Menu = styled.img`
   position: fixed;
   top: 20px;
   right: 0;
-  margin-right: 3%;
+  margin-right: 30px;
   float: right;
-  z-index: 6;
+  z-index: 990;
 `;
 
 function Header() {
   const history = useHistory();
-  const [isSidebar, setSidebar] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // useEffect(() => {
-  //   setSidebar(false);
-  // }, isSidebar);
   const onClickMenu = () => {
-    setSidebar((current) => !current);
+    setIsSidebarOpen((prev) => !prev);
   };
 
-  const backHome = () => {
+  const onClickBackHome = () => {
+    console.log("back");
     history.push("/");
   };
+
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, []);
 
   return (
     <div>
       <StyledHeader>
-        <Logo onClick={backHome} />
-        <Menu onClick={onClickMenu} />
+        <Logo onClick={onClickBackHome} src={logo} />
       </StyledHeader>
-      {isSidebar ? <Sidebar status={isSidebar} /> : null}
+      <Menu onClick={onClickMenu} src={menu} />
+      {isSidebarOpen ? (
+        <Sidebar setIsSidebarOpen={setIsSidebarOpen} width={300} />
+      ) : null}
     </div>
   );
 }

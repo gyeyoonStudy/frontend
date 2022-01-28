@@ -1,19 +1,21 @@
 ﻿import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../styles/theme";
-import media from "../styles/media";
-import { BlackButton, WhiteButton } from "../components/Button/Button";
 import { useHistory } from "react-router-dom";
-import Header from "../components/Layout/Header/Header";
+import styled from "styled-components";
+
+import theme from "../styles/theme";
+
+import { BlackButton, WhiteButton } from "../components/Button";
+import AppLayout from "../components/AppLayout";
+
 import BackgroundImage from "../../src/assets/background.png";
 
-const img = "/assets/background.png";
 const Body = styled.div`
   padding: 0;
   margin: 0;
+  bottom: 0;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 60px) !important;
+  height: calc(100vh) !important;
   background-image: url(${BackgroundImage});
   font-family: "Noto Sans KR", sans-serif;
 `;
@@ -37,17 +39,16 @@ const Container = styled.div`
 function LandingPage() {
   const history = useHistory();
   const handleLogin = () => {
-    console.log("history");
     history.push("/login/signIn");
   };
 
   const handleSignup = () => {
-    console.log("history");
     history.push("/login/signup");
   };
 
   return (
-    <Container className="container">
+    <Container>
+      <AppLayout />
       <Body>
         <BtnWrapper>
           <BlackButton text={"로그인"} onClick={handleLogin} />
