@@ -74,12 +74,21 @@ const BackgroundImg = styled.div`
 function MyProjectPage() {
   const history = useHistory();
 
+  const onClickAddProject = () => {
+    history.push("/project/create");
+  };
+
   return (
     <Container>
       <AppLayout />
       <Body>
         <ProjectContainer>
-          <WideButton text={"프로젝트"} width="100%" fontSize="0.8rem" />
+          <WideButton
+            text={"프로젝트"}
+            width="100%"
+            fontSize="0.8rem"
+            onClick={onClickAddProject}
+          />
           <DefaultProjectItem
             projectName={"Boated"}
             captain={"captain"}
