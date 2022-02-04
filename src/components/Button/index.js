@@ -33,12 +33,12 @@ const StyledWideBtn = styled(StyledBlack)`
 `;
 
 const StyledMiniBtn = styled(StyledBlack)`
-  width: ${(props) => props.width};
+  width: ${(props) => `${props.width}%`};
   font-size: ${(props) => props.fontSize};
   color: ${(props) => props.color};
   background-color: ${(props) => props.bgColor};
   box-shadow: 0px 3px 3px 1px ${theme.colors.medium_gray};
-  padding: 0.2rem 1rem;
+  padding: 0.3rem 1rem;
 `;
 
 function BlackButton({ text, fontSize, onClick }) {
@@ -59,7 +59,12 @@ function WideButton({ text, width, fontSize, onClick }) {
 
 function MiniButton({ text, width, fontSize, color, bgColor, onClick }) {
   return (
-    <StyledMiniBtn onClick={onClick} color={color} bgColor={bgColor}>
+    <StyledMiniBtn
+      onClick={onClick}
+      color={color}
+      bgColor={bgColor}
+      width={width}
+    >
       {text}
     </StyledMiniBtn>
   );

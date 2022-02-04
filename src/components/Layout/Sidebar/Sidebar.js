@@ -93,7 +93,13 @@ function Sidebar({ setIsSidebarOpen, width }) {
             >
               프로젝트 홈
             </MenuItem>
-            <MenuItem>초대확인</MenuItem>
+            <MenuItem
+              onClick={() => {
+                history.push("/invited");
+              }}
+            >
+              초대확인
+            </MenuItem>
             <MenuItem>로그아웃</MenuItem>
           </ul>
         </StyledBody>
