@@ -14,7 +14,7 @@ import {
   Label,
 } from "../../components/Input";
 import TextBox from "../../components/Layout/TextBox";
-import { WideButton, MiniButton } from "../../components/Button";
+import { WideButton, MiniButton, BlackButton } from "../../components/Button";
 import AppLayout from "../../components/AppLayout";
 import DefaultProjectItem from "../../components/Layout/Project/Default";
 import ProjectCreate from "../../components/ProjectCreatLayout";
@@ -40,21 +40,23 @@ const Body = styled.div`
   font-family: "Noto Sans KR", sans-serif;
 `;
 const Container = styled.div`
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   height: calc(100vh) !important;
   z-index: 1;
 `;
 
 const InvitationContainer = styled.ul`
-  overflow: scroll;
+  overflow: auto;
+  overflow-y: visible;
   overflow-x: hidden;
   margin-top: 5%;
-  display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding-left: 2%;
   width: 85%;
-  height: 100%;
+  height: 80%;
   z-index: 3;
 `;
 
@@ -90,9 +92,9 @@ const BackgroundImg = styled.div`
 `;
 
 const ProjectName = styled.h1`
-  margin-top: 5%;
+  margin-top: 4%;
   width: 80%;
-  position: static;
+  height: 10px;
   z-index: 999;
 `;
 
@@ -119,8 +121,16 @@ const AddInvitation = styled.img`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 990;
+`;
+
 function CreatePage() {
-  const [inputs, setInputs] = useState({});
+  const [projectName, setProjectName] = useState("");
   const history = useHistory();
   const [isCreate, setIsCreate] = useState(true);
   const [isAddInvitation, setIsAddInvitation] = useState(false);
@@ -148,8 +158,7 @@ function CreatePage() {
             <ProjectCreate />
           ) : (
             <>
-              <ProjectName>프로젝트 이름</ProjectName>
-
+              <ProjectName>{projectName}</ProjectName>
               <InvitationContainer>
                 {InvitationList.map((value) => {
                   return <InvitationItem key={value} index={value} />;
@@ -162,6 +171,15 @@ function CreatePage() {
           )}
         </ProjectContainer>
       </Body>
+      {isCreate ? null : (
+        <ButtonWrapper>
+          <WideButton
+            width={"13vw"}
+            fontSize={"0.9rem"}
+            text={"생성하기"}
+          ></WideButton>
+        </ButtonWrapper>
+      )}
       <BackgroundImg />
     </Container>
   );

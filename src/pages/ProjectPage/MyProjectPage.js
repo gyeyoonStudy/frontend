@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import { Input } from "../../components/Input";
 import TextBox from "../../components/Layout/TextBox";
-import { WideButton } from "../../components/Button";
+import { BlackButton, WideButton } from "../../components/Button";
 import ProjetItem from "../../components/Layout/ProjetItem";
 import Modal from "../../components/Modal/Modal";
 import AppLayout from "../../components/AppLayout";

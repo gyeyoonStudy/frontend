@@ -68,24 +68,20 @@ const DescriptionContainer = styled.div`
   height: 100%;
 `;
 
-function ProjectCreate(props) {
+function ProjectCreate({}) {
   const [inputs, setInputs] = useState({});
-  const [isCreate, setIsCreate] = useState(props.isCreate);
+
   const history = useHistory();
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    console.log(name, value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     history.push("/home");
-  };
-
-  const goToInvitation = () => {
-    setIsCreate(false);
   };
 
   return (

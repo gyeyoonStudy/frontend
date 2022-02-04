@@ -1,7 +1,10 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import PropTypes from "prop-types";
+
+import Modal from "../Modal/Modal";
+import { CheckDialog, SingleDialog } from "../Dialog";
 
 const StyledBox = styled.div`
   position: relative;
@@ -24,9 +27,9 @@ const StyledBody = styled.div`
   flex-direction: row;
   align-items: center;
   font-size: 0.8rem;
-  width: 100%;
+  width: 95%;
   height: 8vh;
-  margin-right: 10%;
+  margin-right: 20%;
 `;
 
 const StyledIndex = styled.h1`
@@ -44,10 +47,10 @@ const StyledInput = styled.input`
   background-color: none;
   border: none;
   width: 30%;
-  height: 100%;
+  height: 70%;
   padding-left: 5%;
   margin-right: 10%;
-  margin-bottom: 10px;
+
   &:focus {
     outline: none;
   }
@@ -60,14 +63,52 @@ const StyledText = styled.h1`
 `;
 
 function InvitationItem({ index }) {
+  const [IsDialogVisible, setIsDialogVisible] = useState(false);
+  const [IsDialogReleaseVisible, setIsDialogReleaseVisible] = useState(false);
+
+  const handleOpenReleaseModal = () => {
+    setIsDialogReleaseVisible(true);
+  };
+  const handleCloseReleaseModal = () => {
+    setIsDialogReleaseVisible(false);
+  };
+
+  const handleOpenModal = () => {
+    setIsDialogVisible(true);
+  };
+  const handleCloseModal = () => {
+    setIsDialogVisible(false);
+  };
+
   return (
     <StyledBox>
       <StyledBody>
         <StyledIndex>{index}</StyledIndex>
-        <StyledInput />
-        <StyledText color={theme.colors.black}>{"초대하기"}</StyledText>
-        <StyledText color={theme.colors.red}>{"방출하기"}</StyledText>
+        <StyledInput type="email" />
+        <StyledText color={theme.colors.black} onClick={handleOpenModal}>
+          {"초대하기"}
+        </StyledText>
+        <StyledText color={theme.colors.red} onClick={handleOpenReleaseModal}>
+          {"방출하기"}
+        </StyledText>
       </StyledBody>
+      {IsDialogVisible && (
+        <SingleDialog
+          content={"존재하지 않는 회원입니다"}
+          isVisible={IsDialogVisible}
+          closable={true}
+          onClose={handleCloseModal}
+        />
+      )}
+      {IsDialogReleaseVisible && (
+        <CheckDialog
+          content={"(sample)님을 방출하시겠습니까?"}
+          isVisible={IsDialogReleaseVisible}
+          onCancel={handleCloseReleaseModal}
+          onNext={handleCloseReleaseModal}
+          closable={true}
+        />
+      )}
     </StyledBox>
   );
 }

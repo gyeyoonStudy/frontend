@@ -29,6 +29,7 @@ const StyledWideBtn = styled(StyledBlack)`
   font-size: ${(props) => props.fontSize};
   box-shadow: none;
   padding: 0.45rem 10%;
+  border-radius: 0.35rem;
 `;
 
 const StyledMiniBtn = styled(StyledBlack)`
