@@ -83,12 +83,7 @@ function MyProjectPage() {
       <AppLayout />
       <Body>
         <ProjectContainer>
-          <WideButton
-            text={"프로젝트"}
-            width="100%"
-            fontSize="0.8rem"
-            onClick={onClickAddProject}
-          />
+          <WideButton text={"프로젝트"} width="100%" fontSize="0.8rem" />
           <DefaultProjectItem
             projectName={"Boated"}
             captain={"captain"}
@@ -107,7 +102,7 @@ function MyProjectPage() {
           ></DefaultProjectItem>
         </ProjectContainer>
       </Body>
-      <FloatingIcon src={floating} />
+      <FloatingIcon src={floating} onClick={onClickAddProject} />
       <BackgroundImg />
     </Container>
   );

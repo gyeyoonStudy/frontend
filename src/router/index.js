@@ -8,6 +8,7 @@ import CreatePage from "../pages/ProjectPage/CreatePage";
 import DetailPage from "../pages/ProjectPage/DetailPage";
 import MyProjectPage from "../pages/ProjectPage/MyProjectPage";
 import InvitedPage from "../pages/InvitedPage";
+import ProjectHomePage from "../pages/ProjectPage/HomePage";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route exact path="/myproject" component={MyProjectPage} />
       <Route exact path="/project/detail" component={DetailPage} />
       <Route exact path="/project/create" component={CreatePage} />
+      <Route exact path="/project/home" component={ProjectHomePage} />
       <Route exact path="/invited" component={InvitedPage} />
     </Switch>
   );

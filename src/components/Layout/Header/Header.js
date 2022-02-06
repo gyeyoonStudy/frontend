@@ -8,7 +8,7 @@ import menu from "../../../assets/ic_menu.png";
 import Sidebar from "../Sidebar/Sidebar";
 
 const StyledHeader = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   display: flex;
@@ -16,25 +16,23 @@ const StyledHeader = styled.div`
   align-items: center;
   background-color: white;
   height: 60px;
-  z-index: 990;
+  z-index: 982;
 `;
 
-///// 출력 안됨
 const Logo = styled.img`
   height: 50%;
   float: left;
   margin-left: 10px;
-  z-index: 990;
+  z-index: 982;
 `;
 
-///// 출력 안됨
 const Menu = styled.img`
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 0;
   margin-right: 30px;
   float: right;
-  z-index: 990;
+  z-index: 982;
 `;
 
 function Header() {
@@ -47,7 +45,7 @@ function Header() {
 
   const onClickBackHome = () => {
     console.log("back");
-    history.push("/");
+    history.push("/home");
   };
 
   useEffect(() => {

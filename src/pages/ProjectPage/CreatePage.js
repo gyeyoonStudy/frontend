@@ -130,14 +130,19 @@ const ButtonWrapper = styled.div`
 `;
 
 function CreatePage() {
-  const [projectName, setProjectName] = useState("");
   const history = useHistory();
+
+  const [projectName, setProjectName] = useState("");
   const [isCreate, setIsCreate] = useState(true);
   const [isAddInvitation, setIsAddInvitation] = useState(false);
   const [InvitationList, setInvitationList] = useState([1]);
 
   const goToInvitation = () => {
     setIsCreate(false);
+  };
+
+  const onClickBackHome = () => {
+    history.push("/home");
   };
 
   const addInviation = () => {
@@ -177,6 +182,7 @@ function CreatePage() {
             width={"13vw"}
             fontSize={"0.9rem"}
             text={"생성하기"}
+            onClick={onClickBackHome}
           ></WideButton>
         </ButtonWrapper>
       )}

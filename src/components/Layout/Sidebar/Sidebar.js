@@ -88,7 +88,7 @@ function Sidebar({ setIsSidebarOpen, width }) {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                history.push("/home");
+                history.push("/project/home");
               }}
             >
               프로젝트 홈

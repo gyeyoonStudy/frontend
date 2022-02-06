@@ -63,21 +63,21 @@ const StyledText = styled.h1`
 `;
 
 function InvitationItem({ index }) {
-  const [IsDialogVisible, setIsDialogVisible] = useState(false);
-  const [IsDialogReleaseVisible, setIsDialogReleaseVisible] = useState(false);
+  const [isInviteDialogVisible, setIsInviteDialogVisible] = useState(false);
+  const [isReleaseDialogVisible, setIsReleaseDialogVisible] = useState(false);
 
   const handleOpenReleaseModal = () => {
-    setIsDialogReleaseVisible(true);
+    setIsReleaseDialogVisible(true);
   };
   const handleCloseReleaseModal = () => {
-    setIsDialogReleaseVisible(false);
+    setIsReleaseDialogVisible(false);
   };
 
   const handleOpenModal = () => {
-    setIsDialogVisible(true);
+    setIsInviteDialogVisible(true);
   };
   const handleCloseModal = () => {
-    setIsDialogVisible(false);
+    setIsInviteDialogVisible(false);
   };
 
   return (
@@ -92,18 +92,18 @@ function InvitationItem({ index }) {
           {"방출하기"}
         </StyledText>
       </StyledBody>
-      {IsDialogVisible && (
+      {isInviteDialogVisible && (
         <SingleDialog
           content={"존재하지 않는 회원입니다"}
-          isVisible={IsDialogVisible}
+          isVisible={isInviteDialogVisible}
           closable={true}
           onClose={handleCloseModal}
         />
       )}
-      {IsDialogReleaseVisible && (
+      {isReleaseDialogVisible && (
         <CheckDialog
           content={"(sample)님을 방출하시겠습니까?"}
-          isVisible={IsDialogReleaseVisible}
+          isVisible={isReleaseDialogVisible}
           onCancel={handleCloseReleaseModal}
           onNext={handleCloseReleaseModal}
           closable={true}
