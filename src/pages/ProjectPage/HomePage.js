@@ -1,4 +1,4 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
@@ -11,17 +11,20 @@ import { WideButton } from "../../components/Button";
 import ProjectInfo from "../../components/Layout/Project/ProjectInfo";
 import ProgressItem from "../../components/Layout/Project/ProgressItem";
 import KanbanBoard from "../../components/Layout/Project/KanbanBoard";
+import TaskCreateModal from "../../components/Modal/TaskCreateModal";
+import Modal from "../../components/Modal/Modal";
 
 import waveImage from "../../assets/wave_background.png";
 import darkWaveImage from "../../assets/wave_dark_background.png";
 import Profile from "../../assets/profile.png";
+import floating from "../../assets/floating.png";
 
 const Container = styled.div`
   overflow: hidden;
   display: flex;
   height: 200vh;
   z-index: 1;
-  z-index: 998;
+  z-index: 990;
 `;
 const Body = styled.div`
   position: absolute;
@@ -33,7 +36,7 @@ const Body = styled.div`
   margin: 0;
   width: 100%;
   align-items: center;
-  z-index: 998;
+  z-index: 996;
   font-family: "Noto Sans KR", sans-serif;
 `;
 const ProjectContainer = styled.div`
@@ -51,7 +54,7 @@ const KanbanBoardContainer = styled.div`
   justify-content: space-around;
   flex-flow: row;
   width: 80%;
-  height: 120vh;
+  height: 150vh;
   margin: 10% auto;
   z-index: 1;
 `;
@@ -88,7 +91,7 @@ const BackgroundDarkImg = styled.div`
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: url(${darkWaveImage});
-  z-index: 996;
+  z-index: 995;
 `;
 
 const BackgroundBottom = styled.section`
@@ -100,7 +103,28 @@ const BackgroundBottom = styled.section`
   z-index: 970;
 `;
 
+const FloatingIcon = styled.img`
+  position: fixed;
+  bottom: 5%;
+  width: 5%;
+  right: 1%;
+  float: right;
+  height: auto;
+  margin-right: 5%;
+  z-index: 998;
+`;
+
 function HomePage() {
+  const history = useHistory();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <Container>
@@ -110,7 +134,16 @@ function HomePage() {
             <ProjectInfo
               ProjectName={"Boated"}
               Description={" 이 프로젝트는 ..."}
+              bgColor={"white"}
             />
+            {isModalOpen ? (
+              <TaskCreateModal
+                visible={isModalOpen}
+                closable={true}
+                maskClosable={true}
+                onClose={closeModal}
+              />
+            ) : null}
             <ProgressItem progress={70} />
           </ProjectContainer>
           <KanbanBoardContainer>
@@ -128,7 +161,9 @@ function HomePage() {
             </KanbanBoardWrapper>
           </KanbanBoardContainer>
         </Body>
+        <FloatingIcon src={floating} onClick={openModal} />
       </Container>
+
       <BackgroundTop />
       <BackgroundImg />
       <BackgroundDarkImg />

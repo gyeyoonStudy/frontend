@@ -9,6 +9,8 @@ import DetailPage from "../pages/ProjectPage/DetailPage";
 import MyProjectPage from "../pages/ProjectPage/MyProjectPage";
 import InvitedPage from "../pages/InvitedPage";
 import ProjectHomePage from "../pages/ProjectPage/HomePage";
+import EditProjectPage from "../pages/ProjectPage/EditProject";
+import ReceiptPage from "../pages/ReceiptPage";
 
 function Router() {
   return (
@@ -22,6 +24,7 @@ function Router() {
       <Route exact path="/project/create" component={CreatePage} />
       <Route exact path="/project/home" component={ProjectHomePage} />
       <Route exact path="/invited" component={InvitedPage} />
+      <Route exact path="/receipt" component={ReceiptPage} />
     </Switch>
   );
 }

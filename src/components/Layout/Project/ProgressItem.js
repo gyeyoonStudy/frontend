@@ -31,22 +31,14 @@ const StyledBody = styled.div`
 const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 22vh;
+  height: 23vh;
   border-radius: 0.8rem;
   display: flex;
   flex-flow: column;
   background-color: ${theme.colors.white};
-  box-shadow: 2px 1px 4px 4px ${theme.colors.light_blue};
+  box-shadow: 1px 1px 2px 2px ${theme.colors.light_gray};
   justify-content: center;
   align-items: center;
-`;
-
-const ProfileBody = styled.div`
-  width: 70%;
-  display: flex;
-  justify-content: left;
-  flex-flow: row;
-  margin: 2% 0;
 `;
 
 const StyledText = styled.p`
@@ -71,17 +63,16 @@ const StyledTitleText = styled.p`
 
 const StyledSubText = styled.p`
   position: absolute;
-  width: auto;
   margin-right: 5%;
   right: 0;
   top: 5%;
-  font-size: 0.5rem;
+  font-size: 0.2rem;
   align-items: center;
 `;
 
 const ProgressWrapper = styled.div`
   display: flex;
-   width: 90%
+  width: 90%;
   height: 40%;
 `;
 
@@ -93,14 +84,20 @@ const Boat = styled.img`
   z-index: 997;
 `;
 
-const IconWrapper = styled.div``;
-
 function ProgressItem({ progress }) {
   const [height, setHeight] = useState((progress / 10) % 2 === 0 ? 0 : 25);
   console.log((progress / 10) % 2 === 0 ? 10 : 0);
+  const history = useHistory();
+
+  const onClickLookReceipt = () => {
+    history.push("/receipt");
+  };
+
   return (
     <Container>
-      <StyledSubText>{"영수증 출력"}</StyledSubText>
+      <StyledSubText onClick={onClickLookReceipt}>
+        {"영수증 출력"}
+      </StyledSubText>
       <StyledBody>
         <StyledTitleText fontsize={"0.8"}>{"프로젝트 소개"}</StyledTitleText>
         <StyledPercentText>{`${progress}%`}</StyledPercentText>

@@ -23,9 +23,9 @@ const Body = styled.div`
 const BtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  padding-top: 17%;
-  padding-left: 5%;
+  position: fixed;
+  top: 40%;
+  left: 5%;
   column-gap: 20px;
   width: fit-content;
 `;

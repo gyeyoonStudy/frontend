@@ -48,7 +48,7 @@ const FormContainer = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
   top: 50%;
   transform: translateY(-50%);
   float: right;

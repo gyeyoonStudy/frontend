@@ -1,10 +1,11 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
 import theme from "../../../styles/theme";
 import { WideButton } from "../../Button";
+import TaskDetailModal from "../../Modal/TaskDetailModal";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -36,14 +37,32 @@ const StyledContent = styled.div`
 `;
 
 function KanbanBoard({ level }) {
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const openModal = () => {
+    if (isDetailModalOpen === false) setIsDetailModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsDetailModalOpen(false);
+  };
+
+  const taskItems = [1, 2, 3, 4];
+
   return (
     <StyledContainer>
       <WideButton text={"Ready"}></WideButton>
       <StyledBody>
-        <StyledContent></StyledContent>
-        <StyledContent></StyledContent>
-        <StyledContent></StyledContent>
-        <StyledContent></StyledContent>
+        {taskItems.map((value) => (
+          <StyledContent onClick={openModal} key={value}>
+            {isDetailModalOpen ? (
+              <TaskDetailModal
+                visible={isDetailModalOpen}
+                closable={true}
+                maskClosable={true}
+                onClose={closeModal}
+              />
+            ) : null}
+          </StyledContent>
+        ))}
       </StyledBody>
     </StyledContainer>
   );

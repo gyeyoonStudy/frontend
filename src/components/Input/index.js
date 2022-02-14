@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const StyledInput = styled.input`
   padding: 0.45rem 2rem;
   border-radius: 0.25rem;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   line-height: 1.5;
   border: 1px solid lightgray;
   background-color: ${theme.colors.white};
@@ -18,8 +18,9 @@ const StyledInput = styled.input`
 `;
 
 const StyledDescription = styled.input`
+  box-sizing: border-box;
   border-radius: 0.25rem;
-  padding: 0.45rem 2rem;
+  padding: 0.45rem 1rem;
   width: ${(props) => `${props.width}%`};
   height: ${(props) => `${props.height}%`};
   font-size: 0.6rem;
@@ -36,7 +37,7 @@ const StyledDescription = styled.input`
 const StyledLabel = styled.label`
   float: left;
   font-size: 0.7rem;
-  padding-bottom: 5%;
+  padding-bottom: 1rem;
 `;
 
 const InputWrapper = styled.div`
@@ -74,7 +75,7 @@ function LabelInput({ type, name, value, onChange }) {
   );
 }
 
-function WideInput({ type, name, value, width, onChange }) {
+function WideInput({ type, name, value, width, onChange, fontSize }) {
   return (
     <InputWrapper>
       <StyledWideInput
@@ -83,6 +84,7 @@ function WideInput({ type, name, value, width, onChange }) {
         value={value}
         onChange={onChange}
         width={width}
+        fontSize={fontSize}
       ></StyledWideInput>
     </InputWrapper>
   );

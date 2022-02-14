@@ -16,7 +16,7 @@ const StyledHeader = styled.div`
   align-items: center;
   background-color: white;
   height: 60px;
-  z-index: 982;
+  z-index: 997;
 `;
 
 const Logo = styled.img`
@@ -32,7 +32,7 @@ const Menu = styled.img`
   right: 0;
   margin-right: 30px;
   float: right;
-  z-index: 982;
+  z-index: 997;
 `;
 
 function Header() {

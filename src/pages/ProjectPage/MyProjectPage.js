@@ -83,7 +83,7 @@ function MyProjectPage() {
       <AppLayout />
       <Body>
         <ProjectContainer>
-          <WideButton text={"프로젝트"} width="100%" fontSize="0.8rem" />
+          <WideButton text={"프로젝트"} width={100} fontSize="0.8rem" />
           <DefaultProjectItem
             projectName={"Boated"}
             captain={"captain"}
