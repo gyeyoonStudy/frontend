@@ -2,9 +2,11 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import theme from "../styles/theme";
-import profile from "../assets/profile.png";
-import { BlackButton, WhiteButton, MiniButton } from "./Button";
+import theme from "../../../styles/theme";
+
+import { BlackButton, WhiteButton, MiniButton } from "../../Button";
+
+import profile from "../../../assets/profile.png";
 
 const StyledContainer = styled.div`
   position: relative;

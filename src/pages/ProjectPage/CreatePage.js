@@ -13,19 +13,18 @@ import {
   Input,
   Label,
 } from "../../components/Input";
-import TextBox from "../../components/Layout/TextBox";
+import TextBox from "../../components/TextBox";
 import { WideButton, MiniButton, BlackButton } from "../../components/Button";
 import AppLayout from "../../components/AppLayout";
 import DefaultProjectItem from "../../components/Layout/Project/Default";
-import ProjectCreate from "../../components/ProjectCreatLayout";
+import ProjectCreate from "../../components/Layout/Project/ProjectCreatLayout";
+import InvitationItem from "../../components/Layout/InvitationItem";
 
 import Profile from "../../assets/profile.png";
 import waveImage from "../../assets/wave_background.png";
 import floating from "../../assets/floating.png";
 import nextBtn from "../../assets/nextBtn.png";
 import plusBtn from "../../assets/plusBtn.png";
-
-import InvitationItem from "../../components/Layout/InvitationItem";
 
 const Body = styled.div`
   position: absolute;

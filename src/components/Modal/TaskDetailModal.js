@@ -1,17 +1,17 @@
 ﻿import React from "react";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import styled from "styled-components";
 import Portal from "./Portal";
+import theme from "../../styles/theme";
 
 import { WideInput, LabelInput, FlexInput, Input, Label } from "../Input";
 import { WideButton, MiniButton, ToggleButton, SelectButton } from "../Button";
+import TaskHistory from "../Task/TaskHistory";
 
 import CloseImg from "../../assets/close.png";
 import BackgroundImg from "../../assets/high_wave.png";
-
-import theme from "../../styles/theme";
-import TaskHistory from "../Task/TaskHistory";
 
 const Container = styled.div`
   display: flex;

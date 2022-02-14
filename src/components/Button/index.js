@@ -143,7 +143,6 @@ function ToggleButton({ Button1, Button2, fontSize }) {
   const onClickToggle = () => {
     setButton1((prev) => (prev === 0 ? 1 : 0));
     setButton2((prev) => (prev === 0 ? 1 : 0));
-    console.log(button1, button2);
   };
 
   return (

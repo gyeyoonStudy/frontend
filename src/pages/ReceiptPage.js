@@ -6,7 +6,7 @@ import theme from "../styles/theme";
 
 import ProjetItem from "../components/Layout/ProjetItem";
 import { Input } from "../components/Input";
-import TextBox from "../components/Layout/TextBox";
+import TextBox from "../components/TextBox";
 import { WideButton } from "../components/Button";
 import Modal from "../components/Modal/Modal";
 import AppLayout from "../components/AppLayout";

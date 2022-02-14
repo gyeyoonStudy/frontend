@@ -4,10 +4,8 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 import { Input } from "../../components/Input";
-import TextBox from "../../components/Layout/TextBox";
+import TextBox from "../../components/TextBox";
 import { BlackButton, WideButton } from "../../components/Button";
-import ProjetItem from "../../components/Layout/ProjetItem";
-import Modal from "../../components/Modal/Modal";
 import AppLayout from "../../components/AppLayout";
 import DefaultProjectItem from "../../components/Layout/Project/Default";
 

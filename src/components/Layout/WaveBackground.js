@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import styled from "styled-components";
+
 import waveImage from "../../assets/wave_background.png";
 
 const BackgroundImg = styled.div`

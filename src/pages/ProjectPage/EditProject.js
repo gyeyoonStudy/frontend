@@ -16,16 +16,14 @@ import {
   ToggleButton,
   SelectButton,
 } from "../../components/Button";
+import DateModal from "../../components/DatePicker";
+import TextBox from "../../components/TextBox";
+import DropDownMenu from "../../components/Dropdown";
+import AppLayout from "../../components/AppLayout";
+import CrewItem from "../../components/Task/CrewItem";
 
 import CloseImg from "../../assets/close.png";
 import waveImage from "../../assets/wave_background.png";
-
-import DateModal from "../../components/DatePicker";
-import TextBox from "../../components/Layout/TextBox";
-import DropDownMenu from "../../components/Dropdown";
-import Footer from "../../components/Layout/Footer/Footer";
-import AppLayout from "../../components/AppLayout";
-import CrewItem from "../../components/Task/CrewItem";
 
 const Container = styled.div`
   display: flex;

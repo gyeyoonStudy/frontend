@@ -6,7 +6,7 @@ import theme from "../../styles/theme";
 
 import AppLayout from "../../components/AppLayout";
 import { Input } from "../../components/Input";
-import TextBox from "../../components/Layout/TextBox";
+import TextBox from "../../components/TextBox";
 import { WideButton } from "../../components/Button";
 import ProjectInfo from "../../components/Layout/Project/ProjectInfo";
 import ProgressItem from "../../components/Layout/Project/ProgressItem";

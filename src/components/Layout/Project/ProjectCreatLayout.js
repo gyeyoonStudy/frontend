@@ -3,9 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { WideInput, LabelInput, FlexInput, Input, Label } from "./Input";
-import { WideButton, MiniButton } from "./Button";
-
+import { WideInput, LabelInput, FlexInput, Input, Label } from "../../Input";
+import { WideButton, MiniButton } from "../../Button";
 
 const Container = styled.div`
   overflow: hidden;

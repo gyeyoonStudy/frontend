@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
 import theme from "../../../styles/theme";
+
 import ProgressBackground from "../../../assets/progressBackground.png";
 import BoatIcon from "../../../assets/BoatIcon.png";
 

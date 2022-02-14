@@ -4,15 +4,14 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Portal from "./Portal";
 
+import theme from "../../styles/theme";
+
 import { WideInput, LabelInput, FlexInput, Input, Label } from "../Input";
 import { WideButton, MiniButton, ToggleButton, SelectButton } from "../Button";
+import DateModal from "../DatePicker";
+import DropDownMenu from "../Dropdown";
 
 import CloseImg from "../../assets/close.png";
-
-import theme from "../../styles/theme";
-import DateModal from "../DatePicker";
-import TextBox from "../Layout/TextBox";
-import DropDownMenu from "../Dropdown";
 
 const Container = styled.div`
   display: flex;
