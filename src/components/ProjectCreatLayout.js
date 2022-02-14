@@ -6,10 +6,6 @@ import styled from "styled-components";
 import { WideInput, LabelInput, FlexInput, Input, Label } from "./Input";
 import { WideButton, MiniButton } from "./Button";
 
-import DefaultProjectItem from "./Layout/Project/Default";
-
-import theme from "../styles/theme";
-import nextBtn from "../assets/nextBtn.png";
 
 const Container = styled.div`
   overflow: hidden;

@@ -22,8 +22,8 @@ const ProfileContainer = styled.div`
   border-radius: 0.8rem;
   display: flex;
   flex-flow: row;
-  background-color: ${theme.colors.white};
-  box-shadow: 2px 1px 4px 4px ${theme.colors.light_blue};
+  background-color: ${(props) => props.bgColor};
+  box-shadow: 1px 1px 2px 2px ${theme.colors.light_gray};
   justify-content: space-around;
   align-items: center;
   margin: 10% 0;
@@ -75,12 +75,13 @@ const StyledDay = styled.p`
 function ProjectInfo({
   ProjectName,
   Description,
+  bgColor,
   captainName,
   startDay,
   endDay,
 }) {
   return (
-    <ProfileContainer>
+    <ProfileContainer bgColor={bgColor}>
       <ProfileImg src={Profile} />
       <ProfileBody>
         <ProfileWrapper>
