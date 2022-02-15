@@ -212,6 +212,13 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
     return [...Array(size).keys()].map((key) => key + start);
   }
 
+  function convert(str) {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+
   return (
     <Portal elementId="modal-root">
       <ModalOverlay visible={isVisible} />
@@ -255,11 +262,7 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
                       <Label name={"마감 기한"}>
                         <SelectButton
                           width={80}
-                          text={
-                            ProjectDeadline[0].startDate
-                              .toISOString()
-                              .split("T")[0]
-                          }
+                          text={convert(ProjectDeadline[0].startDate)}
                           onClick={onClickOpenCalender}
                         />
                       </Label>
@@ -279,9 +282,7 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
                           text={
                             ProjectDeadline[0].endDate === null
                               ? "Deadline"
-                              : ProjectDeadline[0].endDate
-                                  .toISOString()
-                                  .split("T")[0]
+                              : convert(ProjectDeadline[0].endDate)
                           }
                           onClick={onClickOpenCalender}
                         />
