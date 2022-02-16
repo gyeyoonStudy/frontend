@@ -1,8 +1,9 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 import theme from "../../../styles/theme";
+
+import { MiniButton } from "../../Button";
 
 import profile from "../../../assets/profile.png";
 
@@ -10,7 +11,9 @@ const StyledContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  background-color: ${theme.colors.light_gray};
+  background-color: ${theme.colors.white};
+  align-items: center;
+  box-shadow: 1px 1px 3px 3px ${theme.colors.light_blue};
   margin: 20px 0;
   border-radius: 0.8rem;
   width: 100%;
@@ -22,6 +25,8 @@ const StyledBody = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 90%;
   align-self: center;
   height: 100%;
@@ -29,17 +34,25 @@ const StyledBody = styled.div`
 const StyledWrapper = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-around;
-  width: 80%;
+  justify-content: space-between;
+  width: 90%;
   height: 100%;
   align-items: center;
 `;
 
 const TextContainer = styled.div`
-  width: 60%;
+  width: 50%;
   display: flex;
   justify-content: left;
   flex-direction: column; ;
+`;
+
+const ButtonContainer = styled.div`
+  width: 10%;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 const Profile = styled.img`
@@ -61,7 +74,7 @@ const StyledName = styled.h1`
   font-size: 15px;
 `;
 
-function DefaultProjectItem({ onClick, projectName, captain }) {
+function InvitedItem({ onClick, projectName, captain }) {
   return (
     <StyledContainer onClick={onClick}>
       <StyledBody>
@@ -71,10 +84,18 @@ function DefaultProjectItem({ onClick, projectName, captain }) {
             <StyledTitle>{projectName}</StyledTitle>
             <StyledName>{captain}</StyledName>
           </TextContainer>
+          <ButtonContainer>
+            <MiniButton text="수락" />
+            <MiniButton
+              text="거절"
+              bgColor={theme.colors.light_gray}
+              color={theme.colors.black}
+            />
+          </ButtonContainer>
         </StyledWrapper>
       </StyledBody>
     </StyledContainer>
   );
 }
 
-export default DefaultProjectItem;
+export default InvitedItem;

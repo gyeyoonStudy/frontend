@@ -1,51 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
-import theme from "../../styles/theme";
-
 import PropTypes from "prop-types";
 
-function ProjectBar({ process, color }) {
-  return <StyledBar color={color} process={process}></StyledBar>;
-}
-
-function ProjetItem({
-  process,
-  color,
-  onClick,
-  projectName,
-  projectTask,
-  Dday,
-}) {
-  return (
-    <StyledContainer onClick={onClick}>
-      <StyledBody>
-        <ProjectBar process={process} color={color} />
-        <StyledWrapper>
-          <TextContainer>
-            <StyledName>{projectName}</StyledName>
-            <StyledName>{projectTask}</StyledName>
-          </TextContainer>
-          <DayContainer>
-            <StyledName>마감기한</StyledName>
-            <StyledDay>{Dday}</StyledDay>
-          </DayContainer>
-        </StyledWrapper>
-      </StyledBody>
-    </StyledContainer>
-  );
-}
-
-ProjetItem.propTypes = {
-  process: PropTypes.string,
-  color: PropTypes.string,
-  onClick: PropTypes.func,
-  projectName: PropTypes.string,
-  projectTask: PropTypes.string,
-  Dday: PropTypes.string,
-};
-
-export default ProjetItem;
+import theme from "../../styles/theme";
 
 const StyledContainer = styled.div`
   position: relative;
@@ -110,3 +67,45 @@ const StyledBar = styled.div`
   border-radius: 3px;
   align-content: center;
 `;
+
+function ProjectBar({ process, color }) {
+  return <StyledBar color={color} process={process} />;
+}
+
+function ProjetItem({
+  process,
+  color,
+  onClick,
+  projectName,
+  projectTask,
+  Dday,
+}) {
+  return (
+    <StyledContainer onClick={onClick}>
+      <StyledBody>
+        <ProjectBar process={process} color={color} />
+        <StyledWrapper>
+          <TextContainer>
+            <StyledName>{projectName}</StyledName>
+            <StyledName>{projectTask}</StyledName>
+          </TextContainer>
+          <DayContainer>
+            <StyledName>마감기한</StyledName>
+            <StyledDay>{Dday}</StyledDay>
+          </DayContainer>
+        </StyledWrapper>
+      </StyledBody>
+    </StyledContainer>
+  );
+}
+
+ProjetItem.propTypes = {
+  process: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  projectName: PropTypes.string.isRequired,
+  projectTask: PropTypes.string.isRequired,
+  Dday: PropTypes.string,
+};
+
+export default ProjetItem;

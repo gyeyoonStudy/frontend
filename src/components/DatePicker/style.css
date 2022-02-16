@@ -1,0 +1,15 @@
+﻿.rdrDayNumber {
+  font-size: 0.4rem !important;
+}
+.rdrDay {
+  height: 2rem !important;
+}
+.rdrMonth {
+  width: 100% !important;
+}
+
+.rdrMonthsVertical {
+  width: 90% !important;
+  align-items: center;
+  margin: 0 auto;
+}

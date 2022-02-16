@@ -50,6 +50,10 @@ const Boated = styled.img`
 const MenuItem = styled.li`
   padding: 10% 0;
   font-size: 0.7rem;
+  &:hover {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
 `;
 
 function Sidebar({ setIsSidebarOpen, width }) {
@@ -77,12 +81,25 @@ function Sidebar({ setIsSidebarOpen, width }) {
             <MenuItem>내 정보 수정</MenuItem>
             <MenuItem
               onClick={() => {
-                history.push("/home");
+                history.push("/myproject");
               }}
             >
               내 프로젝트
             </MenuItem>
-            <MenuItem>초대확인</MenuItem>
+            <MenuItem
+              onClick={() => {
+                history.push("/project/home");
+              }}
+            >
+              프로젝트 홈
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                history.push("/invited");
+              }}
+            >
+              초대확인
+            </MenuItem>
             <MenuItem>로그아웃</MenuItem>
           </ul>
         </StyledBody>

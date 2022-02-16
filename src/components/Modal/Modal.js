@@ -2,70 +2,8 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Portal from "./Portal";
-import { BlackButton } from "../Button";
 
-function Modal({
-  className,
-  onClose,
-  maskClosable,
-  closable,
-  visible,
-  children,
-}) {
-  const onMaskClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose(e);
-    }
-  };
-
-  const close = (e) => {
-    if (onClose) {
-      onClose(e);
-    }
-  };
-
-  useEffect(() => {
-    document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = `position: ""; top: "";`;
-      window.scrollTo(0, parseInt(scrollY || "0") * -1);
-    };
-  }, []);
-
-  return (
-    <Portal elementId="modal-root">
-      <ModalOverlay visible={visible} />
-      <ModalWrapper
-        className={className}
-        onClick={maskClosable ? onMaskClick : null}
-        tabIndex={-1}
-        visible={visible}
-      >
-        <ModalInner tabIndex={0} className="modal-inner">
-          {closable && (
-            <BlackButton
-              className="modal-close"
-              onClick={close}
-              text={"close"}
-            />
-          )}
-          {children}
-        </ModalInner>
-      </ModalWrapper>
-    </Portal>
-  );
-}
-
-Modal.defaultProps = {
-  visible: false,
-  closable: true,
-  maskClosable: true,
-};
-
-Modal.propTypes = {
-  visible: PropTypes.bool,
-};
+import theme from "../../styles/theme";
 
 const ModalWrapper = styled.div`
   box-sizing: border-box;
@@ -96,15 +34,71 @@ const ModalInner = styled.div`
   box-sizing: border-box;
   position: relative;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #fff;
+  background-color: ${theme.colors.dark_gray};
   border-radius: 10px;
-  width: 60%;
+  width: 20%;
   max-width: 80%;
-  height: 50vh;
+  height: 20vh;
+  max-height: 70vh;
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
-  padding: 40px 20px;
 `;
+
+function Modal({
+  className,
+  onClose,
+  maskClosable,
+  closable,
+  visible,
+  children,
+}) {
+  const onClickMask = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose(e);
+    }
+  };
+
+  const close = (e) => {
+    if (onClose) {
+      onClose(e);
+    }
+  };
+
+  useEffect(() => {
+    document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = `position: ""; top: "";`;
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+    };
+  }, []);
+
+  return (
+    <Portal elementId="modal-root">
+      <ModalOverlay visible={visible} />
+      <ModalWrapper
+        className={className}
+        onClick={maskClosable ? onClickMask : null}
+        tabIndex={-1}
+        visible={visible}
+      >
+        <ModalInner tabIndex={0} className="modal-inner">
+          {children}
+        </ModalInner>
+      </ModalWrapper>
+    </Portal>
+  );
+}
+
+Modal.defaultProps = {
+  visible: false,
+  closable: true,
+  maskClosable: true,
+};
+
+Modal.propTypes = {
+  visible: PropTypes.bool,
+};
 
 export default Modal;

@@ -2,8 +2,6 @@
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-import theme from "../styles/theme";
-
 import { BlackButton, WhiteButton } from "../components/Button";
 import AppLayout from "../components/AppLayout";
 
@@ -23,9 +21,9 @@ const Body = styled.div`
 const BtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  padding-top: 17%;
-  padding-left: 5%;
+  position: fixed;
+  top: 40%;
+  left: 5%;
   column-gap: 20px;
   width: fit-content;
 `;
@@ -51,8 +49,8 @@ function LandingPage() {
       <AppLayout />
       <Body>
         <BtnWrapper>
-          <BlackButton text={"로그인"} onClick={handleLogin} />
-          <WhiteButton text={"회원가입"} onClick={handleSignup} />
+          <BlackButton text="로그인" onClick={handleLogin} />
+          <WhiteButton text="회원가입" onClick={handleSignup} />
         </BtnWrapper>
       </Body>
     </Container>

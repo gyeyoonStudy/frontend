@@ -93,37 +93,37 @@ function SignUpPage() {
         <BackgroundImg />
         <BoxContainer>
           <FormContainer onSubmit={handleSubmit}>
-            <InputWrapper className="input-wrapper">
+            <InputWrapper>
               <LabelInput
-                type={"text"}
-                name={"Nick_name"}
+                type="text"
+                name="Nick_name"
                 value={inputs.Email || ""}
                 onChange={handleChange}
               />
             </InputWrapper>
-            <InputWrapper className="input-wrapper">
+            <InputWrapper>
               <LabelInput
-                type={"text"}
-                name={"Email"}
+                type="text"
+                name="Email"
                 value={inputs.Password || ""}
                 onChange={handleChange}
               />
             </InputWrapper>
 
-            <InputWrapper className="input-wrapper">
+            <InputWrapper>
               <LabelInput
-                type={"password"}
-                name={"Password"}
-                alue={inputs.Password || ""}
+                type="password"
+                name="Password"
+                value={inputs.Password || ""}
                 onChange={handleChange}
               />
             </InputWrapper>
 
-            <InputWrapper className="input-wrapper">
+            <InputWrapper>
               <LabelInput
                 type={"password"}
                 name={"Password_check"}
-                alue={inputs.Password || ""}
+                value={inputs.Password || ""}
                 onChange={handleChange}
               />
             </InputWrapper>

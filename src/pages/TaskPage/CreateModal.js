@@ -1,18 +1,18 @@
 ﻿import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 
 import theme from "../../styles/theme";
 
 import { WideButton } from "../../components/Button";
 import AppLayout from "../../components/AppLayout";
-import ProjectCreate from "../../components/Layout/Project/ProjectCreatLayout";
-import InvitationItem from "../../components/Layout/InvitationItem";
+import ProjectCreate from "../../components/ProjectCreatLayout";
 
 import waveImage from "../../assets/wave_background.png";
 import nextBtn from "../../assets/nextBtn.png";
 import plusBtn from "../../assets/plusBtn.png";
+
+import InvitationItem from "../../components/Layout/InvitationItem";
 
 const Body = styled.div`
   position: absolute;
@@ -118,11 +118,10 @@ const ButtonWrapper = styled.div`
 
 function CreatePage() {
   const history = useHistory();
-
   const [projectName, setProjectName] = useState("");
   const [isCreated, setIsCreated] = useState(true);
-  const [isAddedInvitation, setIsAddedInvitation] = useState(false);
-  const [invitationList, setInvitationList] = useState([1]);
+  const [isAddInvitation, setIsAddInvitation] = useState(false);
+  const [InvitationList, setInvitationList] = useState([1]);
 
   const onClickGoToInvitation = () => {
     setIsCreated(false);
@@ -132,11 +131,11 @@ function CreatePage() {
     history.push("/home");
   };
 
-  const onClickAddInvitation = () => {
-    const cur = invitationList;
-    cur.push(invitationList.length + 1);
+  const onClickAddInviation = () => {
+    const cur = InvitationList;
+    cur.push(InvitationList.length + 1);
     setInvitationList(cur);
-    setIsAddedInvitation((prev) => !prev);
+    setIsAddInvitation((prev) => !prev);
   };
 
   return (
@@ -145,7 +144,7 @@ function CreatePage() {
       <Body>
         <ProjectContainer>
           {isCreated ? (
-            <NextBtn src={nextBtn} onClick={onClickGoToInvitation} />
+            <NextBtn src={nextBtn} onClick={onClickAddInviation} />
           ) : null}
           {isCreated ? (
             <ProjectCreate />
@@ -153,11 +152,11 @@ function CreatePage() {
             <>
               <ProjectName>{projectName}</ProjectName>
               <InvitationContainer>
-                {invitationList.map((value) => {
+                {InvitationList.map((value) => {
                   return <InvitationItem key={value} index={value} />;
                 })}
                 <InviteWrap>
-                  <AddInvitation src={plusBtn} onClick={onClickAddInvitation} />
+                  <AddInvitation src={plusBtn} onClick={onClickAddInviation} />
                 </InviteWrap>
               </InvitationContainer>
             </>

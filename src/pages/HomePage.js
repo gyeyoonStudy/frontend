@@ -1,18 +1,17 @@
-﻿import React, { useEffect } from "react";
+﻿import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
 
-import { Input } from "../components/Input";
-import TextBox from "../components/Layout/TextBox";
-import { WideButton } from "../components/Button";
 import ProjetItem from "../components/Layout/ProjetItem";
+import { Input } from "../components/Input";
+import TextBox from "../components/TextBox";
+import { WideButton } from "../components/Button";
 import Modal from "../components/Modal/Modal";
 import AppLayout from "../components/AppLayout";
 
-import Profile from "../assets/profile.png";
 import waveImage from "../assets/wave_background.png";
 import floating from "../assets/floating.png";
+import Profile from "../assets/profile.png";
 
 const Body = styled.div`
   position: absolute;
@@ -101,6 +100,10 @@ function HomePage() {
     history.push("/project/detail");
   };
 
+  const onClickAddProject = () => {
+    history.push("/project/create");
+  };
+
   return (
     <Container>
       <AppLayout />
@@ -161,7 +164,7 @@ function HomePage() {
           </>
         </ProjectContainer>
       </Body>
-      <FloatingIcon src={floating} />
+      <FloatingIcon src={floating} onClick={onClickAddProject} />
       <BackgroundImg />
     </Container>
   );
