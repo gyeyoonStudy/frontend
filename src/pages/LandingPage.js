@@ -49,8 +49,8 @@ function LandingPage() {
       <AppLayout />
       <Body>
         <BtnWrapper>
-          <BlackButton text={"로그인"} onClick={handleLogin} />
-          <WhiteButton text={"회원가입"} onClick={handleSignup} />
+          <BlackButton text="로그인" onClick={handleLogin} />
+          <WhiteButton text="회원가입" onClick={handleSignup} />
         </BtnWrapper>
       </Body>
     </Container>
