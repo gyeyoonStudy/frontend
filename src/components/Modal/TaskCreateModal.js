@@ -1,13 +1,13 @@
 ﻿import React from "react";
 import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Portal from "./Portal";
 
 import theme from "../../styles/theme";
 
-import { WideInput, LabelInput, FlexInput, Input, Label } from "../Input";
-import { WideButton, MiniButton, ToggleButton, SelectButton } from "../Button";
+import { WideInput, FlexInput, Label } from "../Input";
+import { WideButton, ToggleButton, SelectButton } from "../Button";
 import DateModal from "../DatePicker";
 import DropDownMenu from "../Dropdown";
 
@@ -176,19 +176,19 @@ const ModalInner = styled.div`
   transform: translateY(-50%);
 `;
 
-function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
+function TaskCreateModal({ visible, onClose, maskClosable }) {
   const [isCalanderOpen, setCalenderOpen] = useState(false);
-  const [DeadlineHour, setDeadlineHour] = useState("HH");
-  const [DeadlineMinute, setDeadlineMinute] = useState("MM");
-  const [isVisible, SetVisible] = useState(visible);
-  const [ProjectDeadline, setProjectDeadline] = useState([
+  const [deadlineHour, setDeadlineHour] = useState("HH");
+  const [deadlineMinute, setDeadlineMinute] = useState("MM");
+  const [isVisible, SetIsVisible] = useState(visible);
+  const [projectDeadline, setProjectDeadline] = useState([
     {
       startDate: new Date(),
       endDate: null,
       key: "selection",
     },
   ]);
-  const onMaskClick = (e) => {
+  const onClickMask = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
     }
@@ -223,7 +223,7 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
     <Portal elementId="modal-root">
       <ModalOverlay visible={isVisible} />
       <ModalWrapper
-        onClick={maskClosable ? onMaskClick : null}
+        onClick={maskClosable ? onClickMask : null}
         tabIndex={-1}
         visible={isVisible}
       >
@@ -241,16 +241,16 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
               <CreateComponent>
                 <CloseBtn
                   src={CloseImg}
-                  onClick={maskClosable ? onMaskClick : null}
+                  onClick={maskClosable ? onClickMask : null}
                 />
                 <BoxContainer>
                   <TitleWrapper>
                     <Label name={"프로젝트 이름"}>
                       <WideInput
-                        type={"text"}
-                        name={"프로젝트 이름"}
-                        width={"100%"}
-                        fontSize={"1rem"}
+                        type="text"
+                        name="프로젝트 이름"
+                        width="100%"
+                        fontSize="1rem"
                       />
                     </Label>
                   </TitleWrapper>
@@ -259,19 +259,15 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
                 <DateContainer>
                   <DateWrapper>
                     <InputWrapper>
-                      <Label name={"마감 기한"}>
+                      <Label name="마감 기한">
                         <SelectButton
                           width={80}
-                          text={convert(ProjectDeadline[0].startDate)}
+                          text={convert(projectDeadline[0].startDate)}
                           onClick={onClickOpenCalender}
                         />
                       </Label>
                     </InputWrapper>
-                    <ToggleButton
-                      Button1={"AM"}
-                      Button2={"PM"}
-                      fontSize={"0.8rem"}
-                    />
+                    <ToggleButton Button1="AM" Button2="PM" fontSize="0.8rem" />
                   </DateWrapper>
 
                   <DateWrapper>
@@ -280,9 +276,9 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
                         <SelectButton
                           width={80}
                           text={
-                            ProjectDeadline[0].endDate === null
+                            projectDeadline[0].endDate === null
                               ? "Deadline"
-                              : convert(ProjectDeadline[0].endDate)
+                              : convert(projectDeadline[0].endDate)
                           }
                           onClick={onClickOpenCalender}
                         />
@@ -291,14 +287,14 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
                     <TimeSelectWrapper>
                       <DropSelectWrapper>
                         <DropDownMenu
-                          header={DeadlineHour === "HH" ? "HH" : DeadlineHour}
+                          header={deadlineHour === "HH" ? "HH" : deadlineHour}
                           optionList={range(12, 1)}
                           width={80}
                           onClick={onClickHourMenu}
                         />
                         <DropDownMenu
                           header={
-                            DeadlineMinute === "MM" ? "MM" : DeadlineMinute
+                            deadlineMinute === "MM" ? "MM" : deadlineMinute
                           }
                           optionList={range(60, 1)}
                           width={80}
@@ -310,14 +306,14 @@ function TaskCreateModal({ visible, onClose, maskClosable, closable }) {
                 </DateContainer>
 
                 <DescriptionContainer>
-                  <Label name={"TASK (100자 이내)"}></Label>
+                  <Label name="TASK (100자 이내)" />
                   <FlexInput width={100} height={70} />
                 </DescriptionContainer>
                 <ButtonWrapper>
                   <WideButton
-                    text={"생성하기"}
-                    fontSize={"0.8rem"}
-                    onClick={onMaskClick}
+                    text="생성하기"
+                    fontSize="0.8rem"
+                    onClick={onClickMask}
                     width={30}
                   />
                 </ButtonWrapper>

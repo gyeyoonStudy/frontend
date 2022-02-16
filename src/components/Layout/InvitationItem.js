@@ -1,9 +1,9 @@
 ﻿import React, { useState } from "react";
 import styled from "styled-components";
-import theme from "../../styles/theme";
 import PropTypes from "prop-types";
 
-import Modal from "../Modal/Modal";
+import theme from "../../styles/theme";
+
 import { CheckDialog, SingleDialog } from "../Dialog";
 
 const StyledBox = styled.div`
@@ -86,15 +86,15 @@ function InvitationItem({ index }) {
         <StyledIndex>{index}</StyledIndex>
         <StyledInput type="email" />
         <StyledText color={theme.colors.black} onClick={handleOpenModal}>
-          {"초대하기"}
+          초대하기
         </StyledText>
         <StyledText color={theme.colors.red} onClick={handleOpenReleaseModal}>
-          {"방출하기"}
+          방출하기
         </StyledText>
       </StyledBody>
       {isInviteDialogVisible && (
         <SingleDialog
-          content={"존재하지 않는 회원입니다"}
+          content="존재하지 않는 회원입니다"
           isVisible={isInviteDialogVisible}
           closable={true}
           onClose={handleCloseModal}
@@ -102,7 +102,7 @@ function InvitationItem({ index }) {
       )}
       {isReleaseDialogVisible && (
         <CheckDialog
-          content={"(sample)님을 방출하시겠습니까?"}
+          content="(sample)님을 방출하시겠습니까?"
           isVisible={isReleaseDialogVisible}
           onCancel={handleCloseReleaseModal}
           onNext={handleCloseReleaseModal}

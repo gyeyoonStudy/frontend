@@ -1,7 +1,8 @@
 ﻿import React, { useState } from "react";
 import styled from "styled-components";
-import theme from "../../styles/theme";
 import PropTypes from "prop-types";
+
+import theme from "../../styles/theme";
 
 import Arrow from "../../assets/down_arrow.png";
 

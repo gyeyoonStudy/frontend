@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { WideInput, LabelInput, FlexInput, Input, Label } from "../../Input";
-import { WideButton, MiniButton } from "../../Button";
+import { WideInput, FlexInput, Label } from "../../Input";
+import { MiniButton } from "../../Button";
 
 const Container = styled.div`
   overflow: hidden;
@@ -64,14 +64,11 @@ const DescriptionContainer = styled.div`
 `;
 
 function ProjectCreate({}) {
-  const [inputs, setInputs] = useState({});
-
   const history = useHistory();
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    console.log(name, value);
   };
 
   const handleSubmit = (event) => {
@@ -84,23 +81,19 @@ function ProjectCreate({}) {
       <CreateComponent>
         <BoxContainer>
           <TitleWrapper>
-            <Label name={"프로젝트 이름"}>
+            <Label name="프로젝트 이름">
               <WideInput
-                type={"text"}
-                name={"프로젝트 이름"}
+                type="text"
+                name="프로젝트 이름"
                 onChange={handleChange}
-                width={"100%"}
+                width="100%"
               />
             </Label>
           </TitleWrapper>
           <DateWrapper>
             <InputWrapper>
               <Label name={"마감 기한"}>
-                <WideInput
-                  type={"text"}
-                  onChange={handleChange}
-                  width={"70%"}
-                />{" "}
+                <WideInput type="text" onChange={handleChange} width="70%" />
               </Label>
             </InputWrapper>
             <MiniButton
@@ -121,11 +114,7 @@ function ProjectCreate({}) {
           <DateWrapper>
             <InputWrapper>
               <Label name={"마감 기한"}>
-                <WideInput
-                  type={"text"}
-                  onChange={handleChange}
-                  width={"50%"}
-                />
+                <WideInput type="text" onChange={handleChange} width="50%" />
               </Label>
             </InputWrapper>
             <MiniButton
@@ -147,7 +136,7 @@ function ProjectCreate({}) {
           </DateWrapper>
         </BoxContainer>
         <DescriptionContainer>
-          <Label name={"프로젝트 설명"}></Label>
+          <Label name={"프로젝트 설명"} />
           <FlexInput width={100} height={40} />
         </DescriptionContainer>
       </CreateComponent>

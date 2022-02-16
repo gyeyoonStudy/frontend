@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import theme from "../../styles/theme";
-import { BlackButton, WideButton } from "../Button";
+
+import { WideButton } from "../Button";
 import Modal from "../Modal/Modal";
 
 const StyledBody = styled.div`
@@ -42,7 +43,7 @@ const ButtonWrapper = styled.div`
 `;
 
 function SingleDialog({ content, isVisible, onClose, closable }) {
-  const close = (e) => {
+  const onClickClose = (e) => {
     if (onClose) {
       onClose(e);
     }
@@ -55,12 +56,7 @@ function SingleDialog({ content, isVisible, onClose, closable }) {
           <StyledContent>{content}</StyledContent>
         </ContentWrapper>
         {closable && (
-          <WideButton
-            wclassName="modal-close"
-            width={"30%"}
-            onClick={close}
-            text={"확인"}
-          />
+          <WideButton width="30%" onClick={onClickClose} text={"확인"} />
         )}
       </StyledBody>
     </Modal>
@@ -72,13 +68,13 @@ function CheckDialog({ content, isVisible, onCancel, onNext, closable }) {
   const [body, setBody] = useState(content);
   const [giveAlert, setGiveAlert] = useState(false);
 
-  const cancel = (e) => {
+  const onClickCancel = (e) => {
     if (onCancel) {
       onCancel(e);
     }
   };
 
-  const next = (e) => {
+  const onClickNext = (e) => {
     if (onNext) {
       if (!giveAlert) {
         setBody("방출되었습니다.");
@@ -95,18 +91,8 @@ function CheckDialog({ content, isVisible, onCancel, onNext, closable }) {
         </ContentWrapper>
         {closable && (
           <ButtonWrapper>
-            <WideButton
-              wclassName="modal-close"
-              width={"30%"}
-              onClick={cancel}
-              text={"취소"}
-            />
-            <WideButton
-              wclassName="modal-close"
-              width={"30%"}
-              onClick={next}
-              text={"확인"}
-            />
+            <WideButton width={"30%"} onClick={onClickCancel} text={"취소"} />
+            <WideButton width={"30%"} onClick={onClickNext} text={"확인"} />
           </ButtonWrapper>
         )}
       </StyledBody>

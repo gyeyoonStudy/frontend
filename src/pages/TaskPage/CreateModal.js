@@ -1,19 +1,14 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 
 import theme from "../../styles/theme";
 
-import { WideButton, MiniButton, BlackButton } from "../../components/Button";
+import { WideButton } from "../../components/Button";
 import AppLayout from "../../components/AppLayout";
-import DefaultProjectItem from "../../components/Layout/Project/Default";
 import ProjectCreate from "../../components/ProjectCreatLayout";
 
-import Profile from "../../assets/profile.png";
 import waveImage from "../../assets/wave_background.png";
-import floating from "../../assets/floating.png";
 import nextBtn from "../../assets/nextBtn.png";
 import plusBtn from "../../assets/plusBtn.png";
 
@@ -123,23 +118,21 @@ const ButtonWrapper = styled.div`
 
 function CreatePage() {
   const history = useHistory();
-
   const [projectName, setProjectName] = useState("");
-  const [isCreate, setIsCreate] = useState(true);
+  const [isCreated, setIsCreated] = useState(true);
   const [isAddInvitation, setIsAddInvitation] = useState(false);
   const [InvitationList, setInvitationList] = useState([1]);
 
-  const goToInvitation = () => {
-    setIsCreate(false);
+  const onClickGoToInvitation = () => {
+    setIsCreated(false);
   };
 
   const onClickBackHome = () => {
     history.push("/home");
   };
 
-  const addInviation = () => {
-    console.log(InvitationList);
-    let cur = InvitationList;
+  const onClickAddInviation = () => {
+    const cur = InvitationList;
     cur.push(InvitationList.length + 1);
     setInvitationList(cur);
     setIsAddInvitation((prev) => !prev);
@@ -150,8 +143,10 @@ function CreatePage() {
       <AppLayout />
       <Body>
         <ProjectContainer>
-          {isCreate ? <NextBtn src={nextBtn} onClick={goToInvitation} /> : null}
-          {isCreate ? (
+          {isCreated ? (
+            <NextBtn src={nextBtn} onClick={onClickAddInviation} />
+          ) : null}
+          {isCreated ? (
             <ProjectCreate />
           ) : (
             <>
@@ -161,14 +156,14 @@ function CreatePage() {
                   return <InvitationItem key={value} index={value} />;
                 })}
                 <InviteWrap>
-                  <AddInvitation src={plusBtn} onClick={addInviation} />
+                  <AddInvitation src={plusBtn} onClick={onClickAddInviation} />
                 </InviteWrap>
               </InvitationContainer>
             </>
           )}
         </ProjectContainer>
       </Body>
-      {isCreate ? null : (
+      {isCreated ? null : (
         <ButtonWrapper>
           <WideButton
             width={"13vw"}

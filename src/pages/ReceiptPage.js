@@ -4,14 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import theme from "../styles/theme";
 
-import ProjetItem from "../components/Layout/ProjetItem";
-import { Input } from "../components/Input";
-import TextBox from "../components/TextBox";
-import { WideButton } from "../components/Button";
-import Modal from "../components/Modal/Modal";
 import AppLayout from "../components/AppLayout";
-import ProjectInfo from "../components/Layout/Project/ProjectInfo";
-import ProgressItem from "../components/Layout/Project/ProgressItem";
 import ReceiptProfile from "../components/Layout/ReceiptProfile";
 
 import Boated from "../assets/BoatIcon.png";
@@ -271,7 +264,7 @@ function ContributionItem({ taskName, crewName, progressPercent }) {
       </ProgressContainer>
       <StyledText>{progressPercent + "%"}</StyledText>
 
-      <StyledSubText>{"내역 확인하기"}</StyledSubText>
+      <StyledSubText>내역 확인하기</StyledSubText>
     </ContributionContainer>
   );
 }
@@ -283,9 +276,6 @@ function ReceiptPage() {
   const openModal = () => {
     setIsModalOpen(true);
   };
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <>
@@ -293,39 +283,37 @@ function ReceiptPage() {
         <AppLayout />
         <Body>
           <ProjectContainer>
-            <StyledTitleText>{"Project Receipt"}</StyledTitleText>
+            <StyledTitleText>Project Receipt</StyledTitleText>
             <Line />
             <ReceiptProfile
-              ProjectName={"Boated"}
-              Description={" 이 프로젝트는 ..."}
-              bgColor={"none"}
+              ProjectName="Boated"
+              Description=" 이 프로젝트는 ..."
+              bgColor="none"
             />
 
             <Line />
             <StyledTextWrapper>
-              <StyledText>{"완료한 Task"}</StyledText>
-              <StyledText>{"완료한 날짜"}</StyledText>
-              <StyledText>{"참여한 팀원"}</StyledText>
-              <StyledText>{"성취도"}</StyledText>
+              <StyledText>완료한 Task</StyledText>
+              <StyledText>완료한 날짜</StyledText>
+              <StyledText>참여한 팀원</StyledText>
+              <StyledText>성취도</StyledText>
             </StyledTextWrapper>
             <TaskDetailItem
-              taskName={"task1"}
-              date={"yyyy-mm-dd"}
-              crewName={"crew1"}
-              progressPercent={"70"}
+              taskName="task1"
+              date="yyyy-mm-dd"
+              crewName="crew1"
+              progressPercent="70"
             />
             <TaskDetailItem
-              taskName={"task1"}
-              date={"yyyy-mm-dd"}
-              crewName={"crew1"}
-              progressPercent={"70"}
+              taskName="task1"
+              date="yyyy-mm-dd"
+              crewName="crew1"
+              progressPercent="70"
             />
 
             <Line />
             <StyledRightWrapper>
-              <StyledRightText StyledRightText>
-                {"TOTAL 성취도"}
-              </StyledRightText>
+              <StyledRightText>TOTAL 성취도</StyledRightText>
               <StyledRightText>{"70%"}</StyledRightText>
             </StyledRightWrapper>
             <Line />
@@ -333,14 +321,9 @@ function ReceiptPage() {
             <StyleLeftText>{"팀원별 기여도"}</StyleLeftText>
             <ContributionList>
               <ContributionItem
-                taskName={"task1"}
-                crewName={"crew1"}
-                progressPercent={"70"}
-              />
-              <ContributionItem
-                taskName={"task2"}
-                crewName={"crew1"}
-                progressPercent={"90"}
+                taskName="task1"
+                crewName="crew1"
+                progressPercent="70"
               />
             </ContributionList>
             <Line />

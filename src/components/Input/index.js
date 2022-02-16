@@ -52,12 +52,7 @@ const StyledWideInput = styled(StyledInput)`
 
 function Input({ type, name, value, onChange, ...res }) {
   return (
-    <StyledInput
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-    ></StyledInput>
+    <StyledInput type={type} name={name} value={value} onChange={onChange} />
   );
 }
 
@@ -65,12 +60,7 @@ function LabelInput({ type, name, value, onChange }) {
   return (
     <InputWrapper>
       <StyledLabel>{name}</StyledLabel>
-      <StyledInput
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-      ></StyledInput>
+      <StyledInput type={type} name={name} value={value} onChange={onChange} />
     </InputWrapper>
   );
 }
@@ -85,7 +75,7 @@ function WideInput({ type, name, value, width, onChange, fontSize }) {
         onChange={onChange}
         width={width}
         fontSize={fontSize}
-      ></StyledWideInput>
+      />
     </InputWrapper>
   );
 }
@@ -108,7 +98,7 @@ function FlexInput({ type, name, value, width, height, onChange }) {
       onChange={onChange}
       height={height}
       width={width}
-    ></StyledDescription>
+    />
   );
 }
 

@@ -1,10 +1,9 @@
 ﻿import React, { useState } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 import theme from "../../../styles/theme";
 
-import { BlackButton, WhiteButton, MiniButton } from "../../Button";
+import { MiniButton } from "../../Button";
 
 import profile from "../../../assets/profile.png";
 
@@ -86,12 +85,12 @@ function InvitedItem({ onClick, projectName, captain }) {
             <StyledName>{captain}</StyledName>
           </TextContainer>
           <ButtonContainer>
-            <MiniButton text={"수락"}></MiniButton>
+            <MiniButton text="수락" />
             <MiniButton
-              text={"거절"}
+              text="거절"
               bgColor={theme.colors.light_gray}
               color={theme.colors.black}
-            ></MiniButton>
+            />
           </ButtonContainer>
         </StyledWrapper>
       </StyledBody>

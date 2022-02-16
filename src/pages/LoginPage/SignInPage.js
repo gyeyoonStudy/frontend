@@ -97,23 +97,23 @@ function SignInPage() {
           <FormContainer onSubmit={handleSubmit}>
             <InputWrapper className="input-wrapper">
               <LabelInput
-                type={"text"}
-                name={"Email"}
+                type="text"
+                name="Email"
                 value={inputs.Email || ""}
                 onChange={handleChange}
               />
             </InputWrapper>
             <InputWrapper className="input-wrapper">
               <LabelInput
-                type={"password"}
-                name={"Password"}
+                type="password"
+                name="Password"
                 alue={inputs.Password || ""}
                 onChange={handleChange}
               />
             </InputWrapper>
             <ButtonContainer>
-              <WhiteButton text={"로그인"} />
-              <BlackButton text={"회원가입"} onClick={onClickSignup} />
+              <WhiteButton text="로그인" />
+              <BlackButton text="회원가입" onClick={onClickSignup} />
             </ButtonContainer>
           </FormContainer>
         </StyledContainer>

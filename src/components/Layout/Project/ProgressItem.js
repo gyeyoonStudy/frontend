@@ -1,5 +1,4 @@
 ﻿import React, { useState } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
@@ -105,7 +104,7 @@ function ProgressItem({ progress }) {
         <StyledText fontsize={"0.7"}>{"complete"}</StyledText>
       </StyledBody>
       <ProgressImg>
-        <Boat boatHeight={height} percent={progress} src={BoatIcon}></Boat>
+        <Boat boatHeight={height} percent={progress} src={BoatIcon} />
       </ProgressImg>
     </Container>
   );

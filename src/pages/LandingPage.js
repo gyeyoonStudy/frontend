@@ -2,8 +2,6 @@
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-import theme from "../styles/theme";
-
 import { BlackButton, WhiteButton } from "../components/Button";
 import AppLayout from "../components/AppLayout";
 

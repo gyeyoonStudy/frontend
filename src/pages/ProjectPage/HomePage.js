@@ -5,18 +5,13 @@ import { useHistory } from "react-router-dom";
 import theme from "../../styles/theme";
 
 import AppLayout from "../../components/AppLayout";
-import { Input } from "../../components/Input";
-import TextBox from "../../components/TextBox";
-import { WideButton } from "../../components/Button";
 import ProjectInfo from "../../components/Layout/Project/ProjectInfo";
 import ProgressItem from "../../components/Layout/Project/ProgressItem";
 import KanbanBoard from "../../components/Layout/Project/KanbanBoard";
 import TaskCreateModal from "../../components/Modal/TaskCreateModal";
-import Modal from "../../components/Modal/Modal";
 
 import waveImage from "../../assets/wave_background.png";
 import darkWaveImage from "../../assets/wave_dark_background.png";
-import Profile from "../../assets/profile.png";
 import floating from "../../assets/floating.png";
 
 const Container = styled.div`

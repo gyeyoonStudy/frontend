@@ -5,8 +5,6 @@ import Portal from "./Portal";
 
 import theme from "../../styles/theme";
 
-import { BlackButton } from "../Button";
-
 const ModalWrapper = styled.div`
   box-sizing: border-box;
   display: ${(props) => (props.visible ? "block" : "none")};
@@ -55,14 +53,13 @@ function Modal({
   visible,
   children,
 }) {
-  const onMaskClick = (e) => {
+  const onClickMask = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
     }
   };
 
   const close = (e) => {
-    console.log("click cloase");
     if (onClose) {
       onClose(e);
     }
@@ -82,7 +79,7 @@ function Modal({
       <ModalOverlay visible={visible} />
       <ModalWrapper
         className={className}
-        onClick={maskClosable ? onMaskClick : null}
+        onClick={maskClosable ? onClickMask : null}
         tabIndex={-1}
         visible={visible}
       >

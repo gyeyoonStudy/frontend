@@ -44,7 +44,6 @@ function Header() {
   };
 
   const onClickBackHome = () => {
-    console.log("back");
     history.push("/home");
   };
 

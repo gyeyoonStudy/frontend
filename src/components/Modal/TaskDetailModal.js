@@ -1,13 +1,10 @@
-﻿import React from "react";
-import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
-
+﻿import React, { useEffect } from "react";
 import styled from "styled-components";
 import Portal from "./Portal";
 import theme from "../../styles/theme";
 
-import { WideInput, LabelInput, FlexInput, Input, Label } from "../Input";
-import { WideButton, MiniButton, ToggleButton, SelectButton } from "../Button";
+import { WideInput, FlexInput, Input, Label } from "../Input";
+import { WideButton } from "../Button";
 import TaskHistory from "../Task/TaskHistory";
 
 import CloseImg from "../../assets/close.png";
@@ -178,7 +175,7 @@ function TaskDetailModal({ visible, onClose, maskClosable, closable }) {
     };
   }, []);
 
-  const onMaskClick = (e) => {
+  const onClickMask = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
     }
@@ -193,7 +190,7 @@ function TaskDetailModal({ visible, onClose, maskClosable, closable }) {
             <ProjectContainer>
               <CloseBtn
                 src={CloseImg}
-                onClick={maskClosable ? onMaskClick : null}
+                onClick={maskClosable ? onClickMask : null}
               />
               <Body>
                 <BoxContainer>
@@ -204,7 +201,7 @@ function TaskDetailModal({ visible, onClose, maskClosable, closable }) {
                   </TitleWrapper>
                   <TitleWrapper>
                     <Label name={"Task 상태"}>
-                      <WideButton text={"팀원검색"} width={100}></WideButton>
+                      <WideButton text={"팀원검색"} width={100} />
                     </Label>
                   </TitleWrapper>
                 </BoxContainer>
@@ -219,7 +216,7 @@ function TaskDetailModal({ visible, onClose, maskClosable, closable }) {
                   </DayContainer>
                 </DetailWrapper>
                 <DescriptionContainer>
-                  <Label name={"TASK (100자 이내)"}></Label>
+                  <Label name="TASK (100자 이내)" />
                   <FlexInput width={100} height={60} />
                 </DescriptionContainer>
                 <HistoryContainer>

@@ -1,7 +1,6 @@
 ﻿import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 
 import theme from "../../../styles/theme";
 
@@ -50,7 +49,7 @@ function KanbanBoard({ level }) {
 
   return (
     <StyledContainer>
-      <WideButton text={"Ready"}></WideButton>
+      <WideButton text="Ready" />
       <StyledBody>
         {taskItems.map((value) => (
           <StyledContent onClick={openModal} key={value}>

@@ -1,15 +1,11 @@
 ﻿import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
 
-import { Input } from "../../components/Input";
-import TextBox from "../../components/TextBox";
-import { BlackButton, WideButton } from "../../components/Button";
+import { WideButton } from "../../components/Button";
 import AppLayout from "../../components/AppLayout";
 import DefaultProjectItem from "../../components/Layout/Project/Default";
 
-import Profile from "../../assets/profile.png";
 import waveImage from "../../assets/wave_background.png";
 import floating from "../../assets/floating.png";
 
@@ -82,22 +78,10 @@ function MyProjectPage() {
       <Body>
         <ProjectContainer>
           <WideButton text={"프로젝트"} width={100} fontSize="0.8rem" />
-          <DefaultProjectItem
-            projectName={"Boated"}
-            captain={"captain"}
-          ></DefaultProjectItem>
-          <DefaultProjectItem
-            projectName={"Boated"}
-            captain={"captain"}
-          ></DefaultProjectItem>
-          <DefaultProjectItem
-            projectName={"Boated"}
-            captain={"captain"}
-          ></DefaultProjectItem>
-          <DefaultProjectItem
-            projectName={"Boated"}
-            captain={"captain"}
-          ></DefaultProjectItem>
+          <DefaultProjectItem projectName={"Boated"} captain={"captain"} />
+          <DefaultProjectItem projectName={"Boated"} captain={"captain"} />
+          <DefaultProjectItem projectName={"Boated"} captain={"captain"} />
+          <DefaultProjectItem projectName={"Boated"} captain={"captain"} />
         </ProjectContainer>
       </Body>
       <FloatingIcon src={floating} onClick={onClickAddProject} />

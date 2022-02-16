@@ -1,23 +1,14 @@
-﻿import React from "react";
-import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+﻿import React, { useState } from "react";
 import styled from "styled-components";
-import Portal from "../../components/Modal/Portal";
 import theme from "../../styles/theme";
-import {
-  WideInput,
-  LabelInput,
-  FlexInput,
-  Input,
-  Label,
-} from "../../components/Input";
+
+import { WideInput, FlexInput, Label } from "../../components/Input";
 import {
   WideButton,
   ToggleButton,
   SelectButton,
 } from "../../components/Button";
 import DateModal from "../../components/DatePicker";
-import TextBox from "../../components/TextBox";
 import DropDownMenu from "../../components/Dropdown";
 import AppLayout from "../../components/AppLayout";
 import CrewItem from "../../components/Task/CrewItem";
@@ -192,16 +183,16 @@ const StyledFooter = styled.div`
 
 function EditProjectPage({ onClose, maskClosable, closable }) {
   const [isCalanderOpen, setCalenderOpen] = useState(false);
-  const [DeadlineHour, setDeadlineHour] = useState("HH");
-  const [DeadlineMinute, setDeadlineMinute] = useState("MM");
-  const [ProjectDeadline, setProjectDeadline] = useState([
+  const [deadlineHour, setDeadlineHour] = useState("HH");
+  const [deadlineMinute, setDeadlineMinute] = useState("MM");
+  const [projectDeadline, setProjectDeadline] = useState([
     {
       startDate: new Date(),
       endDate: null,
       key: "selection",
     },
   ]);
-  const onMaskClick = (e) => {
+  const onClickMask = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
     }
@@ -242,20 +233,20 @@ function EditProjectPage({ onClose, maskClosable, closable }) {
           <CreateComponent>
             <CloseBtn
               src={CloseImg}
-              onClick={maskClosable ? onMaskClick : null}
+              onClick={maskClosable ? onClickMask : null}
             />
             <BoxContainer>
               <TitleWrapper>
-                <Label name={"프로젝트 이름"}>
+                <Label name="프로젝트 이름">
                   <WideInput
-                    type={"text"}
-                    name={"프로젝트 이름"}
-                    width={"60%"}
-                    fontSize={"1rem"}
+                    type="text"
+                    name="프로젝트 이름"
+                    width="60%"
+                    fontSize="1rem"
                   />
                 </Label>
-                <Label name={"팀장 이름"}></Label>
-                <WideInput width={"60%"} fontSize={"1rem"} />
+                <Label name="팀장 이름"></Label>
+                <WideInput width="60%" fontSize="1rem" />
               </TitleWrapper>
 
               <DateContainer>
@@ -265,7 +256,7 @@ function EditProjectPage({ onClose, maskClosable, closable }) {
                       <SelectButton
                         width={70}
                         text={
-                          ProjectDeadline[0].startDate
+                          projectDeadline[0].startDate
                             .toISOString()
                             .split("T")[0]
                         }
@@ -288,9 +279,9 @@ function EditProjectPage({ onClose, maskClosable, closable }) {
                       <SelectButton
                         width={70}
                         text={
-                          ProjectDeadline[0].endDate === null
+                          projectDeadline[0].endDate === null
                             ? "Deadline"
-                            : ProjectDeadline[0].endDate
+                            : projectDeadline[0].endDate
                                 .toISOString()
                                 .split("T")[0]
                         }
@@ -300,13 +291,13 @@ function EditProjectPage({ onClose, maskClosable, closable }) {
                   </InputWrapper>
                   <DropSelectWrapper>
                     <DropDownMenu
-                      header={DeadlineHour === "HH" ? "HH" : DeadlineHour}
+                      header={deadlineHour === "HH" ? "HH" : deadlineHour}
                       optionList={range(12, 1)}
                       width={80}
                       onClick={onClickHourMenu}
                     />
                     <DropDownMenu
-                      header={DeadlineMinute === "MM" ? "MM" : DeadlineMinute}
+                      header={deadlineMinute === "MM" ? "MM" : deadlineMinute}
                       optionList={range(60, 1)}
                       width={80}
                       onClick={onClickMinuteMenu}
@@ -316,7 +307,7 @@ function EditProjectPage({ onClose, maskClosable, closable }) {
               </DateContainer>
             </BoxContainer>
             <DescriptionContainer>
-              <Label name={"프로젝트 소개"}></Label>
+              <Label name="프로젝트 소개" />
               <FlexInput width={100} height={100} />
             </DescriptionContainer>
             <CrewContainer>
@@ -327,7 +318,7 @@ function EditProjectPage({ onClose, maskClosable, closable }) {
             <WideButton
               text={"저장하기"}
               fontSize={"0.8rem"}
-              onClick={onMaskClick}
+              onClick={onClickMask}
               width={30}
             />
           </ButtonWrapper>

@@ -53,7 +53,7 @@ export default function DropDownMenu({ header, optionList, width, onClick }) {
   const options = optionList;
   const toggling = () => setIsOpen(!isOpen);
 
-  const onOptionClicked = (value) => () => {
+  const onClickOption = (value) => () => {
     setSelectedOption(value);
     setIsOpen(false);
     onClick(value);
@@ -68,7 +68,7 @@ export default function DropDownMenu({ header, optionList, width, onClick }) {
         <DropDownListContainer>
           <DropDownList width={width}>
             {options.map((option) => (
-              <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
+              <ListItem onClick={onClickOption(option)} key={option}>
                 {option}
               </ListItem>
             ))}

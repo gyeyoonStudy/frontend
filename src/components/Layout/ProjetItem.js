@@ -69,7 +69,7 @@ const StyledBar = styled.div`
 `;
 
 function ProjectBar({ process, color }) {
-  return <StyledBar color={color} process={process}></StyledBar>;
+  return <StyledBar color={color} process={process} />;
 }
 
 function ProjetItem({

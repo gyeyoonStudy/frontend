@@ -1,10 +1,8 @@
 ﻿import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
 
 import AppLayout from "../components/AppLayout";
-import DefaultProjectItem from "../components/Layout/Project/Default";
 import InvitedItem from "../components/Layout/Project/InvitedItem";
 
 import waveImage from "../assets/wave_background.png";
@@ -77,9 +75,9 @@ function InvitedPage() {
       <AppLayout />
       <Body>
         <ProjectContainer>
-          <InvitedItem projectName={"Boated"} captain={"captain"}></InvitedItem>
-          <InvitedItem projectName={"Boated"} captain={"captain"}></InvitedItem>
-          <InvitedItem projectName={"Boated"} captain={"captain"}></InvitedItem>
+          <InvitedItem projectName={"Boated"} captain={"captain"} />
+          <InvitedItem projectName={"Boated"} captain={"captain"} />
+          <InvitedItem projectName={"Boated"} captain={"captain"} />
         </ProjectContainer>
       </Body>
       <FloatingIcon src={floating} />

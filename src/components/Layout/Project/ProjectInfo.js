@@ -1,7 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 
 import theme from "../../../styles/theme";
 
@@ -86,11 +85,11 @@ function ProjectInfo({
       <ProfileBody>
         <ProfileWrapper>
           <StyledTitleText fontsize={"1"}>{ProjectName}</StyledTitleText>
-          <StyledText fontsize={"0.8"}>{"프로젝트 소개"}</StyledText>
+          <StyledText fontsize={"0.8"}>프로젝트 소개</StyledText>
           <StyledText fontsize={"0.7"}>{Description}</StyledText>
         </ProfileWrapper>
         <ProfileWrapper>
-          <StyledTitleText fontsize={"0.8"}>{"팀장 이름"}</StyledTitleText>
+          <StyledTitleText fontsize={"0.8"}>팀장 이름</StyledTitleText>
           <DayContainer>
             <StyledName>시작날짜</StyledName>
             <StyledDay> yyyy/mm/dd</StyledDay>

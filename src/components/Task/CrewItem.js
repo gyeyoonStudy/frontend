@@ -1,6 +1,4 @@
 ﻿import React from "react";
-import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import theme from "../../styles/theme";
