@@ -1,11 +1,10 @@
 ﻿import React, { useEffect, useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import theme from "../../../styles/theme";
 
-import { SingleDialog } from "../../Dialog";
 import Logout from "../../auth/Logout";
 
 import menu from "../../../assets/ic_menu.png";
@@ -60,7 +59,7 @@ const MenuItem = styled.li`
 `;
 
 function Sidebar({ setIsSidebarOpen, width }) {
-  const [xPosition, setX] = useState(width);
+  const [xPosition, setXPosition] = useState(width);
   const [isSignOutDialogOpen, setIsSignOutDialogOpen] = useState(false);
   const history = useHistory();
   const onClickSignOut = () => {
@@ -68,14 +67,14 @@ function Sidebar({ setIsSidebarOpen, width }) {
   };
 
   const onClickToggleMenu = () => {
-    setX(width);
+    setXPosition(width);
     setTimeout(() => {
       setIsSidebarOpen((prev) => !prev);
     }, 1000);
   };
 
   useEffect(() => {
-    setX(0);
+    setXPosition(0);
   }, []);
 
   return (
