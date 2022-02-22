@@ -16,6 +16,7 @@ const StyledBody = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 0.5rem;
 `;
 
 const ContentWrapper = styled.div`
