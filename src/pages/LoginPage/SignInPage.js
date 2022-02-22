@@ -1,13 +1,13 @@
-﻿import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+﻿import React from "react";
 import styled from "styled-components";
 
 import theme from "../../styles/theme";
 
-import { BlackButton, WhiteButton } from "../../components/Button";
 import Footer from "../../components/Layout/Footer/Footer";
-import { LabelInput } from "../../components/Input";
 import AppLayout from "../../components/AppLayout";
+import { KAKAO_AUTH_URL } from "../../components/auth/OAuth";
+
+import kakakoImage from "../../assets/kakao_login_medium_wide.png";
 
 const Body = styled.div`
   position: absolute;
@@ -33,6 +33,7 @@ const StyledContainer = styled.div`
   margin: 0 auto;
   background-color: ${theme.colors.light_gray};
   border-radius: 1rem;
+  margin-top: 5%;
 `;
 
 const StyledBlock = styled.div`
@@ -43,49 +44,42 @@ const StyledBlock = styled.div`
   float: left;
 `;
 
-const FormContainer = styled.form`
-  position: relative;
+const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-right: 10%;
+  padding-left: 10%;
+  width: 60%;
+`;
+
+const StyledTitle = styled.p`
+  font-size: 1.6rem;
+  font-style: bold;
+  margin: 0 auto;
+  margin-bottom: 10%;
+  font-weight: 600;
+`;
+
+const StyledSubTitle = styled.p`
+  font-size: 0.9rem;
+  font-style: bold;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  margin-bottom: 10%;
+  line-height: 1.6rem;
+`;
+
+const KakaoButton = styled.img`
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  float: right;
-  align-items: center;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  justify-content: left;
-  flex-direction: column;
-  padding-bottom: 10%;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  column-gap: 20px;
+  height: auto;
+  margin-bottom: 5%;
 `;
 
 function SignInPage() {
-  const [inputs, setInputs] = useState({});
-  const history = useHistory();
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    history.push("/home");
-  };
-  const onClickSignup = (event) => {
-    event.preventDefault();
-    history.push("/login/signup");
+  const onClickKakaoLogin = () => {
+    window.location.href = KAKAO_AUTH_URL;
   };
 
   return (
@@ -94,28 +88,14 @@ function SignInPage() {
       <Body>
         <StyledContainer>
           <StyledBlock />
-          <FormContainer onSubmit={handleSubmit}>
-            <InputWrapper className="input-wrapper">
-              <LabelInput
-                type="text"
-                name="Email"
-                value={inputs.Email || ""}
-                onChange={handleChange}
-              />
-            </InputWrapper>
-            <InputWrapper className="input-wrapper">
-              <LabelInput
-                type="password"
-                name="Password"
-                alue={inputs.Password || ""}
-                onChange={handleChange}
-              />
-            </InputWrapper>
-            <ButtonContainer>
-              <WhiteButton text="로그인" />
-              <BlackButton text="회원가입" onClick={onClickSignup} />
-            </ButtonContainer>
-          </FormContainer>
+          <InputWrapper>
+            <StyledTitle>Login in to Boated</StyledTitle>
+            <StyledSubTitle>
+              카카오 계정으로 <br />
+              간편하게 회원가입하세요.
+            </StyledSubTitle>
+            <KakaoButton src={kakakoImage} onClick={onClickKakaoLogin} />
+          </InputWrapper>
         </StyledContainer>
       </Body>
       <Footer />

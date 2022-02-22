@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+﻿import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
@@ -87,7 +87,6 @@ const BackgroundImg = styled.div`
 
 function HomePage() {
   const history = useHistory();
-
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
@@ -126,12 +125,13 @@ function HomePage() {
               </ProfileWrapper>
             </div>
           </ProfileContainer>
-          <WideButton text={"프로젝트"} width="100%" fontSize="0.8rem" />
+          <WideButton text="프로젝트" width={100} fontSize="0.8rem" />
           <ProjetItem
             process={"50%"}
             color={"tomato"}
             projectName={"Project Boated1"}
             projectTask={"Task"}
+            onClick={onClickItem}
             Dday={"2022-01-01 11:11"}
           ></ProjetItem>
           <ProjetItem

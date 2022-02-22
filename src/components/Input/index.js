@@ -47,25 +47,41 @@ const InputWrapper = styled.div`
 `;
 
 const StyledWideInput = styled(StyledInput)`
+  box-sizing: border-box;
   width: ${(props) => props.width};
+  font-size: ${(props) => props.fontSize};
 `;
 
-function Input({ type, name, value, onChange, ...res }) {
+function Input({ type, name, value, onChange, placeholder }) {
   return (
-    <StyledInput type={type} name={name} value={value} onChange={onChange} />
+    <StyledInput
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+    />
   );
 }
 
-function LabelInput({ type, name, value, onChange }) {
+function LabelInput({ title, type, name, value, onChange }) {
   return (
     <InputWrapper>
-      <StyledLabel>{name}</StyledLabel>
+      <StyledLabel>{title}</StyledLabel>
       <StyledInput type={type} name={name} value={value} onChange={onChange} />
     </InputWrapper>
   );
 }
 
-function WideInput({ type, name, value, width, onChange, fontSize }) {
+function WideInput({
+  type,
+  name,
+  value,
+  width,
+  onChange,
+  fontSize,
+  placeholder,
+}) {
   return (
     <InputWrapper>
       <StyledWideInput
@@ -75,6 +91,7 @@ function WideInput({ type, name, value, width, onChange, fontSize }) {
         onChange={onChange}
         width={width}
         fontSize={fontSize}
+        placeholder={placeholder}
       />
     </InputWrapper>
   );

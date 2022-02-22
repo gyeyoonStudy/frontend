@@ -1,6 +1,5 @@
 ﻿import React, { useState } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 
 import theme from "../../styles/theme";
 
@@ -110,7 +109,6 @@ const FloatingIcon = styled.img`
 `;
 
 function HomePage() {
-  const history = useHistory();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -127,9 +125,9 @@ function HomePage() {
         <Body>
           <ProjectContainer>
             <ProjectInfo
-              ProjectName={"Boated"}
-              Description={" 이 프로젝트는 ..."}
-              bgColor={"white"}
+              ProjectName="Boated"
+              Description=" 이 프로젝트는 ..."
+              bgColor="white"
             />
             {isModalOpen ? (
               <TaskCreateModal

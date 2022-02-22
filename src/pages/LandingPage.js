@@ -2,7 +2,7 @@
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-import { BlackButton, WhiteButton } from "../components/Button";
+import { AnimationButton } from "../components/Button";
 import AppLayout from "../components/AppLayout";
 
 import BackgroundImage from "../../src/assets/background.png";
@@ -23,9 +23,9 @@ const BtnWrapper = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 40%;
-  left: 5%;
+  left: 4%;
   column-gap: 20px;
-  width: fit-content;
+  width: 20%;
 `;
 
 const Container = styled.div`
@@ -40,17 +40,17 @@ function LandingPage() {
     history.push("/login/signIn");
   };
 
-  const handleSignup = () => {
-    history.push("/login/signup");
-  };
-
   return (
     <Container>
       <AppLayout />
       <Body>
         <BtnWrapper>
-          <BlackButton text="로그인" onClick={handleLogin} />
-          <WhiteButton text="회원가입" onClick={handleSignup} />
+          <AnimationButton
+            text="지금 시작하기"
+            onClick={handleLogin}
+            width={100}
+            fontSize="0.7rem"
+          />
         </BtnWrapper>
       </Body>
     </Container>

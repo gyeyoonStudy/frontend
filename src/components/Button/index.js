@@ -38,6 +38,20 @@ const StyledWideBtn = styled(StyledBlack)`
   border-radius: 0.35rem;
 `;
 
+const AnimationWideBtn = styled(StyledBlack)`
+  width: ${(props) => `${props.width}%`};
+  font-size: ${(props) => props.fontSize};
+  box-shadow: none;
+  border: 1px solid black;
+  padding: 0.45rem 10%;
+  border-radius: 0.35rem;
+  &:hover {
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.black};
+    border: 2px solid black;
+  }
+`;
+
 const StyledMiniBtn = styled(StyledBlack)`
   width: ${(props) => `${props.width}%`};
   font-size: ${(props) => props.fontSize};
@@ -91,11 +105,11 @@ const ArrowIcon = styled.img`
   transform: translate(-100%, -50%);
 `;
 
-function BlackButton({ text, fontSize, onClick }) {
+function BlackButton({ text, onClick }) {
   return <StyledBlack onClick={onClick}>{text}</StyledBlack>;
 }
 
-function WhiteButton({ text, fontSize, onClick }) {
+function WhiteButton({ text, onClick }) {
   return <StyledWhite onClick={onClick}>{text}</StyledWhite>;
 }
 
@@ -104,6 +118,19 @@ function WideButton({ text, width, fontSize, onClick }) {
     <StyledWideBtn onClick={onClick} width={width} fontSize={fontSize}>
       {text}
     </StyledWideBtn>
+  );
+}
+
+function AnimationButton({ text, width, fontSize, onClick, hoverText }) {
+  return (
+    <AnimationWideBtn
+      onClick={onClick}
+      width={width}
+      fontSize={fontSize}
+      hoverText={hoverText}
+    >
+      {text}
+    </AnimationWideBtn>
   );
 }
 
@@ -194,6 +221,7 @@ export {
   UnlineButton,
   ToggleButton,
   SelectButton,
+  AnimationButton,
 };
 
 BlackButton.propTypes = {
