@@ -89,7 +89,7 @@ function SignInPage() {
         <StyledContainer>
           <StyledBlock />
           <InputWrapper>
-            <StyledTitle>Login in to Boated</StyledTitle>
+            <StyledTitle>Log in to Boated</StyledTitle>
             <StyledSubTitle>
               카카오 계정으로 <br />
               간편하게 회원가입하세요.
