@@ -222,14 +222,14 @@ function EditProjectPage({ onClose, maskClosable, closable }) {
       <BackgroundTop />
       <Container>
         <ProjectContainer>
-          {isCalanderOpen ? (
+          {isCalanderOpen && (
             <DateModal
               visible={isCalanderOpen}
               maskClosable={true}
               closable={true}
               setDeadline={getProjectDeadline}
             />
-          ) : null}
+          )}
           <CreateComponent>
             <CloseBtn
               src={CloseImg}

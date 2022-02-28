@@ -144,9 +144,9 @@ function CreatePage() {
       <AppLayout />
       <Body>
         <ProjectContainer>
-          {isCreated ? (
+          {isCreated && (
             <NextBtn src={nextBtn} onClick={onClickGoToInvitation} />
-          ) : null}
+          )}
           {isCreated ? (
             <ProjectCreate />
           ) : (
@@ -164,7 +164,7 @@ function CreatePage() {
           )}
         </ProjectContainer>
       </Body>
-      {isCreated ? null : (
+      {!isCreated && (
         <ButtonWrapper>
           <WideButton
             width={"13vw"}
