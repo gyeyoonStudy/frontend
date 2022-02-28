@@ -4,8 +4,8 @@ import { SingleDialog } from "../Dialog";
 
 function Logout({ isVisible }) {
   const [isSignOutDialog, setIsSignOutDialog] = useState(isVisible);
-  const [SignOutDialogContent, setSignOutDialogContent] = useState("");
-  const [SignOutDialogLink, setSignOutDialogLink] = useState("/");
+  const [signOutDialogContent, setSignOutDialogContent] = useState("");
+  const [signOutDialogLink, setSignOutDialogLink] = useState("/");
   const history = useHistory();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function Logout({ isVisible }) {
   }, []);
 
   const onClickBackToLanding = () => {
-    history.push(SignOutDialogLink);
+    history.push(signOutDialogLink);
   };
 
   const onClickSignOut = () => {
@@ -32,14 +32,14 @@ function Logout({ isVisible }) {
 
   return (
     <>
-      {isSignOutDialog ? (
+      {isSignOutDialog && (
         <SingleDialog
-          content={SignOutDialogContent}
+          content={signOutDialogContent}
           closable={true}
           isVisible={isSignOutDialog}
           onClose={onClickBackToLanding}
         />
-      ) : null}
+      )}
     </>
   );
 }

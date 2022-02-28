@@ -108,9 +108,9 @@ function Sidebar({ setIsSidebarOpen, width }) {
             </MenuItem>
             <MenuItem onClick={onClickSignOut}>
               로그아웃
-              {isSignOutDialogOpen ? (
+              {isSignOutDialogOpen && (
                 <Logout isVisible={isSignOutDialogOpen} />
-              ) : null}
+              )}
             </MenuItem>
           </ul>
         </StyledBody>

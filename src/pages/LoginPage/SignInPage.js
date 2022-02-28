@@ -5,7 +5,6 @@ import theme from "../../styles/theme";
 
 import Footer from "../../components/Layout/Footer/Footer";
 import AppLayout from "../../components/AppLayout";
-import { KAKAO_AUTH_URL } from "../../components/auth/OAuth";
 
 import kakakoImage from "../../assets/kakao_login_medium_wide.png";
 
@@ -79,7 +78,7 @@ const KakaoButton = styled.img`
 
 function SignInPage() {
   const onClickKakaoLogin = () => {
-    window.location.href = KAKAO_AUTH_URL;
+    window.location.href = process.env.KAKAO_AUTH_URL;
   };
 
   return (

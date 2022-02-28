@@ -8,11 +8,6 @@ import theme from "../../styles/theme";
 import { WideButton } from "../../components/Button";
 import { WideInput } from "../../components/Input";
 import AppLayout from "../../components/AppLayout";
-import {
-  JAVASCRIPT_KEY,
-  CLIENT_ID,
-  REDIRECT_URI,
-} from "../../components/auth/OAuth";
 
 import waveImage from "../../assets/wave_background.png";
 
@@ -96,8 +91,8 @@ function SignUpPage() {
     if (authorizeCodeFromKakao !== undefined) {
       const body = {
         grant_type: "authorization_code",
-        client_id: CLIENT_ID,
-        redirect_uri: REDIRECT_URI,
+        client_id: process.env.CLIENT_ID,
+        redirect_uri: process.env.REDIRECT_URI,
         code: authorizeCodeFromKakao,
       };
 
@@ -116,7 +111,7 @@ function SignUpPage() {
         .then((data) => {
           try {
             if (!window.Kakao.isInitialized()) {
-              window.Kakao.init(JAVASCRIPT_KEY);
+              window.Kakao.init(process.env.JAVASCRIPT_KEY);
             }
             window.Kakao.Auth.setAccessToken(data.access_token);
             getProfile();
