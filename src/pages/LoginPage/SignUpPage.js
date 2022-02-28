@@ -91,8 +91,8 @@ function SignUpPage() {
     if (authorizeCodeFromKakao !== undefined) {
       const body = {
         grant_type: "authorization_code",
-        client_id: process.env.CLIENT_ID,
-        redirect_uri: process.env.REDIRECT_URI,
+        client_id: process.env.REACT_APP_CLIENT_ID,
+        redirect_uri: process.env.REACT_APP_REDIRECT_URI,
         code: authorizeCodeFromKakao,
       };
 
@@ -111,7 +111,7 @@ function SignUpPage() {
         .then((data) => {
           try {
             if (!window.Kakao.isInitialized()) {
-              window.Kakao.init(process.env.JAVASCRIPT_KEY);
+              window.Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
             }
             window.Kakao.Auth.setAccessToken(data.access_token);
             getProfile();

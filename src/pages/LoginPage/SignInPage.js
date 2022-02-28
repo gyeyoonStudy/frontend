@@ -78,7 +78,7 @@ const KakaoButton = styled.img`
 
 function SignInPage() {
   const onClickKakaoLogin = () => {
-    window.location.href = process.env.KAKAO_AUTH_URL;
+    window.location.href = process.env.REACT_APP_KAKAO_AUTH_URL;
   };
 
   return (
