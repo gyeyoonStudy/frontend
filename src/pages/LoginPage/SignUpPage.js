@@ -1,12 +1,12 @@
 ﻿import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import theme from "../../styles/theme";
 
 import { WideButton } from "../../components/Button";
-import { LabelInput } from "../../components/Input";
+import { WideInput } from "../../components/Input";
 import AppLayout from "../../components/AppLayout";
 
 import waveImage from "../../assets/wave_background.png";
@@ -37,7 +37,7 @@ const BoxContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 30%;
-  height: 90%;
+  height: 80%;
   margin: 0 auto;
   margin-top: 10%;
   background-color: ${theme.colors.light_gray};
@@ -47,9 +47,11 @@ const BoxContainer = styled.div`
 
 const InputWrapper = styled.div`
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-direction: column;
-  padding-bottom: 10%;
+  margin: 0 auto;
+  height: 25%;
+  width: 100%;
 `;
 
 const FormContainer = styled.form`
@@ -64,26 +66,89 @@ const FormContainer = styled.form`
   align-items: center;
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  column-gap: 20px;
+const StyledTitle = styled.p`
+  font-size: 1.6rem;
+  font-style: bold;
+  margin: 0 auto;
+  margin-bottom: 10%;
+  font-weight: 600;
 `;
 
 function SignUpPage() {
-  const [inputs, setInputs] = useState({});
+  const [userProfile, setUserProfile] = useState({
+    nickName: "Guest",
+    email: "",
+    school: "",
+  });
   const history = useHistory();
+
+  useEffect(() => {
+    getToken();
+  }, []);
+
+  const getToken = async () => {
+    const authorizeCodeFromKakao = window.location.search.split("=")[1];
+    if (authorizeCodeFromKakao !== undefined) {
+      const body = {
+        grant_type: "authorization_code",
+        client_id: process.env.REACT_APP_CLIENT_ID,
+        redirect_uri: process.env.REACT_APP_REDIRECT_URI,
+        code: authorizeCodeFromKakao,
+      };
+
+      const queryStringBody = Object.keys(body)
+        .map((k) => encodeURIComponent(k) + "=" + encodeURI(body[k]))
+        .join("&");
+
+      fetch("https://kauth.kakao.com/oauth/token", {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        },
+        body: queryStringBody,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          try {
+            if (!window.Kakao.isInitialized()) {
+              window.Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
+            }
+            window.Kakao.Auth.setAccessToken(data.access_token);
+            getProfile();
+          } catch (err) {
+            console.log(err);
+          }
+        });
+    }
+  };
+
+  const getProfile = async () => {
+    try {
+      let data = await window.Kakao.API.request({
+        url: "/v2/user/me",
+      });
+      console.log(data);
+      setUserProfile({
+        nickName: data.kakao_account.profile.nickname,
+        email: data.kakao_account.email,
+        school: "",
+      });
+      console.log(userProfile);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    setUserProfile((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push("/home");
+    if (userProfile.school === "") alert("학교 정보를 입력해주세요");
+    else history.push("/home");
   };
 
   return (
@@ -93,41 +158,19 @@ function SignUpPage() {
         <BackgroundImg />
         <BoxContainer>
           <FormContainer onSubmit={handleSubmit}>
+            <StyledTitle>Welcome, {userProfile.nickName}!</StyledTitle>
             <InputWrapper>
-              <LabelInput
+              <WideInput
                 type="text"
-                name="Nick_name"
-                value={inputs.Email || ""}
+                name="school"
+                placeholder="Write your School name"
+                value={userProfile.school || ""}
                 onChange={handleChange}
+                width="100%"
+                fontSize="0.9rem"
               />
             </InputWrapper>
-            <InputWrapper>
-              <LabelInput
-                type="text"
-                name="Email"
-                value={inputs.Password || ""}
-                onChange={handleChange}
-              />
-            </InputWrapper>
-
-            <InputWrapper>
-              <LabelInput
-                type="password"
-                name="Password"
-                value={inputs.Password || ""}
-                onChange={handleChange}
-              />
-            </InputWrapper>
-
-            <InputWrapper>
-              <LabelInput
-                type={"password"}
-                name={"Password_check"}
-                value={inputs.Password || ""}
-                onChange={handleChange}
-              />
-            </InputWrapper>
-            <WideButton text={"Join"} width={"60%"} fontSize={"0.8rem"} />
+            <WideButton text="Let's start!" width={100} fontSize="1rem" />
           </FormContainer>
         </BoxContainer>
       </Body>

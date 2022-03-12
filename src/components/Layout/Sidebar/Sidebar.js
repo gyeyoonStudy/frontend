@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 import theme from "../../../styles/theme";
 
+import Logout from "../../auth/Logout";
+
 import menu from "../../../assets/ic_menu.png";
 import boated from "../../../assets/boated.png";
 
@@ -57,24 +59,28 @@ const MenuItem = styled.li`
 `;
 
 function Sidebar({ setIsSidebarOpen, width }) {
-  const [xPosition, setX] = useState(width);
+  const [xPosition, setXPosition] = useState(width);
+  const [isSignOutDialogOpen, setIsSignOutDialogOpen] = useState(false);
   const history = useHistory();
+  const onClickSignOut = () => {
+    setIsSignOutDialogOpen(true);
+  };
 
-  const toggleMenu = () => {
-    setX(width);
+  const onClickToggleMenu = () => {
+    setXPosition(width);
     setTimeout(() => {
       setIsSidebarOpen((prev) => !prev);
     }, 1000);
   };
 
   useEffect(() => {
-    setX(0);
+    setXPosition(0);
   }, []);
 
   return (
     <div>
       <StyledBar xPosition={xPosition} width={width} className="open">
-        <Menu onClick={toggleMenu} src={menu} />
+        <Menu onClick={onClickToggleMenu} src={menu} />
         <StyledBody>
           <Boated src={boated} />
           <ul>
@@ -100,7 +106,12 @@ function Sidebar({ setIsSidebarOpen, width }) {
             >
               초대확인
             </MenuItem>
-            <MenuItem>로그아웃</MenuItem>
+            <MenuItem onClick={onClickSignOut}>
+              로그아웃
+              {isSignOutDialogOpen && (
+                <Logout isVisible={isSignOutDialogOpen} />
+              )}
+            </MenuItem>
           </ul>
         </StyledBody>
       </StyledBar>
